@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply w-custom-width m-auto;
+  @apply max-w-[1440px] m-auto;
 }

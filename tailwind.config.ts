@@ -12,6 +12,9 @@ const config: Config = {
       width: {
         'custom-width': '1440px',
       },
+      aspectRatio: {
+        '1/2': '1 / 2',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
