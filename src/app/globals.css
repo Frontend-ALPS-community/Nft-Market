@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.centered-flex {
+  @apply flex justify-center items-center;
+}
+
+.between-flex {
+  @apply flex justify-between items-center;
+}
+
 body {
   @apply max-w-[1440px] m-auto;
 }

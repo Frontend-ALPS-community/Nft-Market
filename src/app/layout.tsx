@@ -1,4 +1,4 @@
-import Header from '@/@components/headers/page';
+import Header from '@/@components/headers/header';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
