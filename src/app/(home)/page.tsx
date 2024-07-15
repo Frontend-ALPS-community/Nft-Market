@@ -13,8 +13,15 @@ export default function Home() {
           <source src="/assets/video/fixmain.mp4" />
         </video>
       </div>
-
+      {/* <div className="flex">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div> */}
       <Navbar />
+      {/* <Modal /> */}
     </div>
   );
 }
