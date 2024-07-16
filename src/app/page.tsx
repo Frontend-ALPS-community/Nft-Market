@@ -1,3 +1,4 @@
+import Modal from '@/@components/modal/modal';
 import Navbar from '@/@components/navbar/navbar';
 import UtilityBar from '@/@components/utilityBar/page';
 
@@ -26,7 +27,7 @@ export default function Home() {
         <Card />
       </div> */}
       <Navbar />
-      {/* <Modal /> */}
+      <Modal />
     </>
   );
 }
