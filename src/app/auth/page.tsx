@@ -15,7 +15,7 @@ const Page = () => {
         <Form isSignup={isSignup} handleClick={handleClick} />
         <div
           onClick={handleClick}
-          className={`flex-1 md:w-1/2 bg-blue-500 text-white flex justify-center items-center transition-transform duration-500 ${isSignup ? 'translate-x-0 -translate-x-full' : ''}`}
+          className={`flex-1 md:w-1/2 bg-blue-500 text-white flex justify-center items-center transition-transform duration-500 ${isSignup ? '-translate-x-full' : ''}`}
         >
           <div className="text-2xl cursor-pointer">
             {isSignup ? '로그인 하러가기' : '회원가입 하러가기'}

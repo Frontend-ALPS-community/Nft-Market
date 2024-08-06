@@ -18,7 +18,7 @@ const Form: React.FC<FormProps> = ({ isSignup, handleClick }) => {
             />{' '}
             <button
               type="button"
-              className="absolute  top-0 right-0  px-3 py-1 text-blue-600 text-white rounded-md"
+              className="absolute  top-0 right-0  px-3 py-1 bg-blue-600 text-white rounded-md"
             >
               중복체크
             </button>
@@ -47,7 +47,7 @@ const Form: React.FC<FormProps> = ({ isSignup, handleClick }) => {
                 />
                 <button
                   type="button"
-                  className="absolute  top-0 right-0  px-3 py-1 text-blue-600 text-white rounded-md"
+                  className="absolute  top-0 right-0  px-3 py-1 bg-blue-600 text-white rounded-md"
                 >
                   중복체크
                 </button>
