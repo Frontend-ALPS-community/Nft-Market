@@ -1,28 +1,31 @@
 'use client';
 import { useState } from 'react';
-import Form from './form/form';
+import Login from './form/login';
+import Signup from './form/signup';
 
-const Page = () => {
+const Page: React.FC = () => {
   const [isSignup, setIsSignup] = useState(false);
 
-  const handleClick = () => {
+  const toggleForm = () => {
     setIsSignup(!isSignup);
   };
 
   return (
-    <>
-      <div className="flex sm:h-[calc(100vh-5rem)] h-[calc(100vh-4rem)] bg-slate-500  relative overflow-hidden">
-        <Form isSignup={isSignup} handleClick={handleClick} />
-        <div
-          onClick={handleClick}
-          className={`flex-1 md:w-1/2 bg-blue-500 text-white flex justify-center items-center transition-transform duration-500 ${isSignup ? '-translate-x-full' : ''}`}
-        >
-          <div className="text-2xl cursor-pointer">
-            {isSignup ? '로그인 하러가기' : '회원가입 하러가기'}
-          </div>
+    <div className="relative w-full h-[calc(100vh-8vh)] overflow-hidden flex justify-center items-center bg-slate-400">
+      <div
+        className={`w-[550px] h-[700px] transition-transform duration-500 transform ${isSignup ? 'translate-x-full' : ''} flex justify-center items-center bg-pink-50`}
+      >
+        {isSignup ? <Signup /> : <Login />}
+      </div>
+      <div
+        className={`w-[550px] h-[700px] bg-blue-500 text-white flex justify-center items-center cursor-pointer transition-transform duration-500 transform  ${isSignup ? '-translate-x-full' : ''} `}
+        onClick={toggleForm}
+      >
+        <div className="text-2xl">
+          {isSignup ? '로그인 하러가기' : '회원가입 하러가기'}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
