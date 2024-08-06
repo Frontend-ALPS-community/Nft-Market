@@ -6,6 +6,10 @@
   @apply flex justify-center items-center;
 }
 
+.flex-center {
+  @apply flex items-center;
+}
+
 .between-flex {
   @apply flex justify-between items-center;
 }
