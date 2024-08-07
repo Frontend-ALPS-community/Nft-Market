@@ -21,7 +21,9 @@ const Signup: React.FC = () => {
         email,
         password,
       });
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
