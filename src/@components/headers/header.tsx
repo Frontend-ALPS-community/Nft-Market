@@ -1,7 +1,12 @@
+'use client';
+import { authApi } from '@/apis/authApi';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const Header = () => {
+  const onClickLogOutBtn = async () => {
+    const res = await authApi.logout();
+  };
   return (
     <>
       <div className="min-w-[380px] w-full h-[80px] bg-slate-200 flex justify-between items-center px-[15px]">
@@ -54,6 +59,7 @@ const Header = () => {
               </div>
             </div>
           </div>
+          <button onClick={onClickLogOutBtn}>로그아웃</button>
         </div>
       </div>
     </>
