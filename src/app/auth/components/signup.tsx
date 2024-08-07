@@ -1,43 +1,27 @@
+import { authApi } from '@/apis/authApi';
 import React, { useState } from 'react';
 
 const Signup: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const [nickname, setNickname] = useState<string>('');
+  const [username, setUsername] = useState<string>('');
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // 폼 제출 로직
 
-    if (password !== confirmPassword) {
-      alert('비밀번호가 일치하지 않습니다!!!');
-      return;
-    }
-    // FormData 객체 생성
-    const formData = new FormData();
-    // FormData에 데이터 추가
-    formData.append('email', email);
-    formData.append('password', password);
-    formData.append('nickname', nickname);
-
-    // FormData의 데이터 확인
-    formData.forEach((value, key) => {
-      console.log(key, value);
-    });
-
-    //요청 로직
-    fetch('주소', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log('응답:', result);
-      })
-      .catch((error) => {
-        console.error('오류 발생:', error);
+    // 유효성 검사 (hook-form, zod 등등)
+    // if (password !== confirmPassword) {
+    //   alert('비밀번호가 일치하지 않습니다!!!');
+    //   return;
+    // }
+    try {
+      const res = await authApi.register({
+        username,
+        email,
+        password,
       });
+    } catch (err) {}
   };
 
   return (
@@ -87,8 +71,8 @@ const Signup: React.FC = () => {
           <input
             type="text"
             className="w-full px-4 py-2 mt-3 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-            value={nickname}
-            onChange={(e) => setNickname(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <button
             type="button"

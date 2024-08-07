@@ -1,6 +1,11 @@
+'use client';
+import { authApi } from '@/apis/authApi';
 import Link from 'next/link';
 
 const Header = () => {
+  const onClickLogOutBtn = async () => {
+    const res = await authApi.logout();
+  };
   return (
     <>
       <div className="min-w-[380px] w-full h-[80px] bg-slate-400 flex justify-between  items-center px-[25px]">
@@ -16,6 +21,7 @@ const Header = () => {
             회원가입
           </Link>
           <div>🟰</div>
+          <button onClick={onClickLogOutBtn}>로그아웃</button>
         </div>
       </div>
     </>

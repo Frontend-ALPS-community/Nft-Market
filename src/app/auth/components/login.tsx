@@ -1,35 +1,19 @@
+import { authApi } from '@/apis/authApi';
 import React, { useState } from 'react';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // FormData 객체 생성
-    const formData = new FormData();
-    // FormData에 데이터 추가
-    formData.append('email', email);
-    formData.append('password', password);
-
-    // FormData의 데이터 확인
-    formData.forEach((value, key) => {
-      console.log(key, value);
-    });
-
-    // 서버에 로그인 요청
-    fetch('주소', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log('응답:', result);
-      })
-      .catch((error) => {
-        console.error('오류 발생:', error);
-      });
+    try {
+      const res = await authApi.login({ email, password });
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

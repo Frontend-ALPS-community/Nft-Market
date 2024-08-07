@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
-import Login from './form/login';
-import Signup from './form/signup';
+import Login from './components/login';
+import Signup from './components/signup';
 
 const Page: React.FC = () => {
   const [isSignup, setIsSignup] = useState(false);
