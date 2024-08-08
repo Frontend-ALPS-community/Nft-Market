@@ -30,4 +30,9 @@ export const authApi = {
     const res = await Axios.post(PATH + '/logout');
     return res.data;
   },
+
+  async status() {
+    const res = await Axios.get(PATH + '/status');
+    return res.data;
+  },
 };
