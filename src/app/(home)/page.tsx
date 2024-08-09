@@ -1,5 +1,6 @@
 import Navbar from '@/@components/navbar/navbar';
 import UtilityBar from '@/@components/utilityBar/page';
+import CardCollection from './components/CardCollection';
 
 export default function Home() {
   return (
@@ -12,20 +13,16 @@ export default function Home() {
             loop
             muted
           >
-            <source src="/assets/video/fixmain.mp4" />
+            <source src="/assets/video/high.mp4" />
           </video>
         </div>
       </div>
       <UtilityBar />
 
-      {/* <div className="flex">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div> */}
-      <Navbar />
+      <div className="flex">
+        <Navbar />
+        <CardCollection />
+      </div>
       {/* <Modal /> */}
     </>
   );

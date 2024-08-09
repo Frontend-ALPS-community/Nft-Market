@@ -11,7 +11,7 @@ const Header = () => {
     <>
       <div className="min-w-[380px] w-full h-[80px] bg-slate-200 flex justify-between items-center px-[15px]">
         <Link href="/" className="flex items-center">
-          <img width={50} src="assets/logo/miniLogo.png" alt="Logo" />
+          <img width={50} src="/assets/logo/miniLogo.png" alt="Logo" />
           <div>서비스명</div>
         </Link>
         <div className="flex text-xs sm:text-base items-center">
