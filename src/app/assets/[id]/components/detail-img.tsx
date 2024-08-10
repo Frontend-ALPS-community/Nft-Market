@@ -5,15 +5,19 @@ interface IDetailImg {
 
 const DetailImg: React.FC<IDetailImg> = ({ img, background }) => {
   return (
-    <>
-      <div className={`bg-[${background}] w-[650px] aspect-square rounded-lg`}>
+    <div>
+      <div
+        style={{ backgroundColor: background }}
+        className={`aspect-square rounded-lg centered-flex relative`}
+      >
+        <div className="absolute right-2 top-2 text-2xl">❤</div>
         <img
           alt="이미지"
           src={process.env.NEXT_PUBLIC_Backend_URL + img}
           className=""
         />
       </div>
-    </>
+    </div>
   );
 };
 

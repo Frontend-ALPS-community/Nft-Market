@@ -12,6 +12,11 @@ const config: Config = {
       width: {
         'custom-width': '1440px',
       },
+      colors: {
+        theme: {
+          text: '#2081E2',
+        },
+      },
       aspectRatio: {
         '2/3': '2 / 3',
       },

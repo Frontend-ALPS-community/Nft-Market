@@ -24,7 +24,8 @@ const Card: React.FC<CardProps> = ({
         className="bg-white rounded-lg shadow-md m-4 w-[250px] cursor-pointer"
       >
         <div
-          className={`aspect-square overflow-hidden bg-[${background}] rounded-lg outline-none`}
+          style={{ backgroundColor: background }}
+          className={`aspect-square overflow-hidden rounded-lg outline-none`}
         >
           <img
             alt="이미지"

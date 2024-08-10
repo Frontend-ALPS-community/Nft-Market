@@ -1,7 +1,8 @@
+import { CardApi } from '@/apis/cardApi';
 import DetailImg from '@/app/assets/[id]/components/detail-img';
 import DetailInfo from '@/app/assets/[id]/components/detail-info';
 import DetailProp from '@/app/assets/[id]/components/detail-property';
-import { CardApi } from '@/apis/cardApi';
+import DetailPrice from './components/detail-price';
 
 interface IParams {
   params: { id: string };
@@ -9,14 +10,16 @@ interface IParams {
 
 const page: React.FC<IParams> = async ({ params: { id } }) => {
   const card = await CardApi.getCard(id);
+
   return (
-    <div className="flex bg-orange-200 my-8">
-      <div>
+    <div className="flex gap-8 m-8">
+      <div className="flex-[3]">
         <DetailImg img={card.image} background={card.attributes.background} />
         <DetailProp />
       </div>
-      <div>
+      <div className="flex-[4]">
         <DetailInfo />
+        <DetailPrice />
       </div>
     </div>
   );
