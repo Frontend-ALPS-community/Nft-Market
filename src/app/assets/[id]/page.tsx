@@ -1,8 +1,8 @@
 import { CardApi } from '@/apis/cardApi';
-import DetailImg from '@/app/assets/[id]/components/detail-img';
-import DetailInfo from '@/app/assets/[id]/components/detail-info';
-import DetailProp from '@/app/assets/[id]/components/detail-property';
-import DetailPrice from './components/detail-price';
+import DetailImg from '@/app/assets/[id]/components/img';
+import DetailInfo from '@/app/assets/[id]/components/info';
+import DetailProp from '@/app/assets/[id]/components/attributes/index.';
+import DetailPrice from './components/price';
 
 interface IParams {
   params: { id: string };
