@@ -1,7 +1,18 @@
+'use client';
 import Navbar from '@/@components/navbar/navbar';
 import UtilityBar from '@/@components/utilityBar/page';
+import { useRef } from 'react';
 
 export default function Home() {
+  const navbarRef = useRef<HTMLDivElement>(null);
+
+  const toggleNavbarVisibility = () => {
+    if (navbarRef.current) {
+      navbarRef.current.style.display =
+        navbarRef.current.style.display === 'none' ? 'block' : 'none';
+    }
+  };
+
   return (
     <>
       <div className="max-w-full">
@@ -16,16 +27,13 @@ export default function Home() {
           </video>
         </div>
       </div>
-      <UtilityBar />
+      <UtilityBar onIconClick={toggleNavbarVisibility} />
 
-      {/* <div className="flex">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div> */}
-      <Navbar />
+      {/* Navbar의 가시성을 Ref를 사용해 제어 */}
+      <div ref={navbarRef}>
+        <Navbar />
+      </div>
+
       {/* <Modal /> */}
     </>
   );
