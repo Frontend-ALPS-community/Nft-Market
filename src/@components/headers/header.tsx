@@ -1,18 +1,19 @@
 'use client';
 import { authApi } from '@/apis/authApi';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 const Header = () => {
   const [authState, setAuthState] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
+  const router = useRouter();
   const onClickLogOutBtn = async () => {
     try {
       await authApi.logout();
       alert('로그아웃되었습니다.');
       setAuthState(false);
-      window.location.reload(); // 페이지 새로고침
+      router.push('/');
     } catch (error) {
       console.error('Logout failed:', error);
     }
