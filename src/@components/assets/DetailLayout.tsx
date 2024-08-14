@@ -5,9 +5,15 @@ import React, { useState } from 'react';
 interface IDetailLayOut extends childProps {
   title: string;
   arrow: boolean;
+  bold: boolean;
 }
 
-const DetailLayout: React.FC<IDetailLayOut> = ({ title, children, arrow }) => {
+const DetailLayout: React.FC<IDetailLayOut> = ({
+  title,
+  children,
+  arrow,
+  bold,
+}) => {
   const [isClick, setIsClick] = useState<boolean>(false);
   return (
     <div className="border rounded-lg">
@@ -15,7 +21,7 @@ const DetailLayout: React.FC<IDetailLayOut> = ({ title, children, arrow }) => {
         <div className="flex justify-between">
           <div className="flex gap-4">
             <div>⚡</div>
-            <div>{title}</div>
+            <div className={`${bold ? 'font-semibold' : ''}`}>{title}</div>
           </div>
           <div
             className={`cursor-pointer ${arrow ? '' : 'hidden'}`}
@@ -25,8 +31,8 @@ const DetailLayout: React.FC<IDetailLayOut> = ({ title, children, arrow }) => {
           </div>
         </div>
       </div>
-      <hr />
-      <div className={`m-4 ${isClick ? 'hidden' : ''}`}>{children}</div>
+      <hr className={`${isClick ? 'hidden' : ''}`} />
+      <div className={`${isClick ? 'hidden' : ''}`}>{children}</div>
     </div>
   );
 };

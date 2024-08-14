@@ -4,7 +4,7 @@ interface IBoxLayout {
 
 const BoxLayout: React.FC<IBoxLayout> = ({ property }) => {
   return (
-    <div className="bg-theme-bg-gray flex-1 flex flex-col gap-1 py-2">
+    <div className="bg-theme-bg-gray flex flex-col gap-1 py-2 w-[180px]">
       <div className="text-xs font-bold text-theme-text-gray text-center">
         {property}
       </div>

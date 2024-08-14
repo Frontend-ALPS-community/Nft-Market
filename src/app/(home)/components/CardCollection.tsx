@@ -1,7 +1,7 @@
 import Card from '@/@components/cards/card';
 import { CardApi } from '@/apis/cardApi';
 
-interface CardItem {
+export interface CardItem {
   _id: string;
   cardName: string;
   price: {
