@@ -1,12 +1,20 @@
+'use client';
+import { IDetailOffer } from '@/app/assets/[id]/components/price';
+import useModal from '@/store/store';
 import ModalLayout from './modalLayout';
 
-const Modal = () => {
+interface IModal extends IDetailOffer {}
+
+const Modal: React.FC<IModal> = ({ id, card }) => {
+  const { isButtonClicked, toggleButton } = useModal();
   return (
     <>
       <ModalLayout>
         <div className="between-flex text-2xl font-bold bg-red-200 m-4">
           <div>제안하기</div>
-          <div>X</div>
+          <div className="cursor-pointer" onClick={toggleButton}>
+            X
+          </div>
         </div>
         <div className="bg-yellow-200 my-8 mx-8">
           <div className="flex-center">
