@@ -9,8 +9,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        xs: '12px',
+      },
       width: {
         'custom-width': '1440px',
+      },
+      colors: {
+        theme: {
+          'text-blue': '#2081E2',
+          'text-gray': '#545454',
+          'text-white': '#FFFFFF',
+          'bg-gray': '#F3F3F3',
+        },
       },
       aspectRatio: {
         '2/3': '2 / 3',
