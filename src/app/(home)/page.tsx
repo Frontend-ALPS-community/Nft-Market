@@ -1,24 +1,13 @@
-'use client';
 import Navbar from '@/@components/navbar/navbar';
 import UtilityBar from '@/@components/utilityBar/page';
-import { useRef } from 'react';
 import CardCollection from './components/CardCollection';
 import HomeInfo from './components/HomeInfo';
 
 export default function Home() {
-  const navbarRef = useRef<HTMLDivElement>(null);
-
-  const toggleNavbarVisibility = () => {
-    if (navbarRef.current) {
-      navbarRef.current.style.display =
-        navbarRef.current.style.display === 'none' ? 'block' : 'none';
-    }
-  };
-
   return (
     <>
       <div className="max-w-full">
-        <div className="w-full h-[500px] bg-red-400 relative">
+        <div className="w-full h-[500px] relative">
           <HomeInfo />
           <video
             className="object-cover w-full h-full mx-auto"
@@ -30,13 +19,11 @@ export default function Home() {
           </video>
         </div>
       </div>
-      <UtilityBar onIconClick={toggleNavbarVisibility} />
-
+      <UtilityBar />
       <div className="flex">
         <Navbar />
         <CardCollection />
       </div>
-      {/* <Modal /> */}
     </>
   );
 }

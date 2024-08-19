@@ -1,13 +1,16 @@
 'use client';
 import DetailLayout from '@/@components/assets/DetailLayout';
 import Modal from '@/@components/modal/modal';
-import useModal from '@/store/store';
+import useModal from '@/store/useModal';
 
 export interface IDetailOffer {
   id: string;
   card: {
     image: string;
     cardName: string;
+    attributes: {
+      background: string;
+    };
   };
 }
 

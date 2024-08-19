@@ -1,7 +1,4 @@
-import { CardApi } from "@/apis/cardApi";
-
-const HomeInfo = async () => {
-  const res = await CardApi.getAllCard();
+const HomeInfo = () => {
   return (
     <>
       <div className="text-theme-text-white absolute">HomeInfo</div>

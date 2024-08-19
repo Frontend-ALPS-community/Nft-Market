@@ -15,7 +15,7 @@ export interface CardItem {
 const CardCollection = async () => {
   const res = await CardApi.getAllCard();
   return (
-    <>
+    <div className="flex flex-wrap">
       {res.map((item: CardItem) => (
         <Card
           id={item._id}
@@ -26,7 +26,7 @@ const CardCollection = async () => {
           background={item.attributes.background}
         />
       ))}
-    </>
+    </div>
   );
 };
 
