@@ -1,7 +1,7 @@
 import DetailLayout from '@/@components/assets/DetailLayout';
 import OfferLayout from './offerLayout';
 
-const DetailOffer= () => {
+const DetailOffer = () => {
   return (
     <>
       <DetailLayout title={'offers'} arrow={true} bold={true}>
