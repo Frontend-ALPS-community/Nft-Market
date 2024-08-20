@@ -23,7 +23,7 @@ const page: React.FC<IParams> = async ({ params: { id } }) => {
         <DetailInfo />
         <DetailPrice card={card} id={id} />
         <DetailGraph />
-        <DetailOffer />
+        <DetailOffer card={card} id={id} />
       </div>
     </div>
   );

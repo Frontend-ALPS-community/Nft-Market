@@ -3,7 +3,7 @@ import DetailLayout from '@/@components/assets/DetailLayout';
 import Modal from '@/@components/modal/modal';
 import useModal from '@/store/useModal';
 
-export interface IDetailOffer {
+export interface IDetailPrice {
   id: string;
   card: {
     image: string;
@@ -14,7 +14,7 @@ export interface IDetailOffer {
   };
 }
 
-const DetailPrice: React.FC<IDetailOffer> = ({ id, card }) => {
+const DetailPrice: React.FC<IDetailPrice> = ({ id, card }) => {
   const { isButtonClicked, toggleButton } = useModal();
   return (
     <>

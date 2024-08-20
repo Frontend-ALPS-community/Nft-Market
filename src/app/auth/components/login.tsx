@@ -1,16 +1,28 @@
+'use client';
 import { authApi } from '@/apis/authApi';
+import useDecodedStore from '@/store/useDecode';
 import React, { useState } from 'react';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const { decoded, setDecoded } = useDecodedStore((state) => ({
+    decoded: state.decoded,
+    setDecoded: state.setDecoded,
+  }));
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       const res = await authApi.login({ email, password });
-      console.log(res);
+      if (res.status === 200) {
+        const res = await authApi.status();
+        setDecoded({
+          userId: res.decoded.userId,
+          username: res.decoded.username,
+        });
+      }
     } catch (err) {
       console.log(err);
     }

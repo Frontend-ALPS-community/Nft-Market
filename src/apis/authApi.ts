@@ -1,3 +1,4 @@
+import { IDecoded } from '@/types/type';
 import { Axios } from './core';
 
 interface RegisterPayload {
@@ -8,6 +9,11 @@ interface RegisterPayload {
 interface LoginPayload {
   email: string;
   password: string;
+}
+
+interface StatusResponse {
+  loggedIn: boolean;
+  decoded: IDecoded;
 }
 
 const PATH = '/auth';
@@ -23,7 +29,7 @@ export const authApi = {
 
   async login({ email, password }: LoginPayload) {
     const res = await Axios.post(PATH + '/login', { email, password });
-    return res.data;
+    return res;
   },
 
   async logout() {
@@ -31,8 +37,12 @@ export const authApi = {
     return res.data;
   },
 
-  async status() {
+  async status(): Promise<StatusResponse> {
     const res = await Axios.get(PATH + '/status');
     return res.data;
+  },
+  async refreshToken() {
+    const res = await Axios.post(PATH + '/refreshAccessToken');
+    return res;
   },
 };
