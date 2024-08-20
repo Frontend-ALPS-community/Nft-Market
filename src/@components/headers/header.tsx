@@ -1,10 +1,18 @@
 'use client';
 import { authApi } from '@/apis/authApi';
+import usePriceInfo from '@/store/usePriceInfo';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 const Header = () => {
+  const { price, setPrice } = usePriceInfo((state) => ({
+    price: state.price,
+    setPrice: state.setPrice,
+  }));
+  useEffect(() => {
+    setPrice();
+  }, []);
   const [authState, setAuthState] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -57,7 +65,7 @@ const Header = () => {
       <Link href="/" className="flex-center">
         <img
           width={50}
-          src="assets/logo/miniLogo.png"
+          src="/assets/logo/miniLogo.png"
           alt="Logo"
           className="mr-[10px]"
         />

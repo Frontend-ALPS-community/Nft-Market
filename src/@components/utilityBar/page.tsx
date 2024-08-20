@@ -1,11 +1,10 @@
-import React, { useRef, useState } from 'react';
+'use client';
+import useUtilBar from '@/store/useUtilBar';
+import { useRef, useState } from 'react';
 import { FiFilter, FiSearch } from 'react-icons/fi';
 
-interface UtilityBarProps {
-  onIconClick: () => void;
-}
-
-const UtilityBar: React.FC<UtilityBarProps> = ({ onIconClick }) => {
+const UtilityBar = () => {
+  const { toggleButton } = useUtilBar();
   const [isFocused, setIsFocused] = useState(false);
   const searchTermRef = useRef<HTMLInputElement>(null);
   const suggestions = ['Eyes', 'Adorable', 'Angry', 'Diamond'];
@@ -21,11 +20,12 @@ const UtilityBar: React.FC<UtilityBarProps> = ({ onIconClick }) => {
   return (
     <div className="max-w-[1350px] mt-6 flex items-center justify-between p-4 rounded-lg shadow-md bg-white mx-auto">
       <div className="flex items-center">
-        <div
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition"
-          onClick={onIconClick}
-        >
-          <FiFilter className="text-gray-700" size={20} />
+        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition">
+          <FiFilter
+            className="text-gray-700"
+            size={20}
+            onClick={toggleButton}
+          />
         </div>
         <div className="ml-4 text-gray-600 text-sm hidden md:block">
           결과 100개
