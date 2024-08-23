@@ -1,80 +1,39 @@
-'use client';
-import Navbar from '@/@components/navbar/navbar';
 import UtilityBar from '@/@components/utilityBar/page';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import React, { ReactNode, useRef } from 'react';
+import Image from 'next/image';
+
+import React, { ReactNode } from 'react';
+import Btn from './components/btn';
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const navbarRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname(); // 현재 경로를 가져옴
-
-  const toggleNavbarVisibility = () => {
-    if (navbarRef.current) {
-      navbarRef.current.style.display =
-        navbarRef.current.style.display === 'none' ? 'block' : 'none';
-    }
-  };
-
-  // 현재 경로가 /favorites 또는 /deals 인지 확인
-  const isHiddenNavbarPage =
-    pathname.includes('/mypage/') &&
-    (pathname.includes('/favorites') || pathname.includes('/deals'));
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300">
-      <div className="bg-white shadow-lg rounded-lg p-8 mx-4 md:mx-20 lg:mx-40 flex flex-col items-center relative">
-        <div className="relative">
-          <div className="w-48 h-48 bg-gradient-to-r from-pink-400 to-red-400 rounded-full overflow-hidden shadow-lg transform transition duration-500 hover:scale-105">
-            {/* 프로필 이미지 */}
+    <div className="min-h-screen ">
+      <div className="bg-theme-bg-gray  h-80   p-8  w-full flex flex-col  relative">
+        <div className="ml-8  absolute top-40 left-0">
+          <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-lg transform transition duration-500  bg-gradient-to-r from-cyan-300 to-sky-400">
+            <span className="absolute inset-0 flex items-center justify-center text-white text-lg  opacity-0 hover:opacity-100 transition-opacity duration-300">
+              <Image
+                src="/assets/logo/edit.png"
+                alt="Edit Icon"
+                width={40}
+                height={40}
+              />
+            </span>
           </div>
-          <button className="absolute bottom-0 right-0 bg-red-500 text-white py-2 px-6 rounded-full shadow-md transform transition duration-300 hover:bg-red-600 translate-x-1/2 translate-y-1/2">
-            프로필 수정
-          </button>
-        </div>
-        <div className="mt-10 text-2xl font-semibold text-gray-700">
-          User Name
+          <div className="mt-4 text-2xl font-semibold ">User Name</div>
         </div>
       </div>
 
-      <div className="flex justify-center mt-8 space-x-4">
-        <Link href="/mypage/1/collections">
-          <button className="bg-gray-800 text-white py-2 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-200 ease-in-out">
-            수집됨
-          </button>
-        </Link>
-        <Link href="/mypage/1/offers">
-          <button className="bg-gray-800 text-white py-2 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-200 ease-in-out">
-            내가 한 제안
-          </button>
-        </Link>
-        <Link href="/mypage/1/deals">
-          <button className="bg-gray-800 text-white py-2 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-200 ease-in-out">
-            거래
-          </button>
-        </Link>
-        <Link href="/mypage/1/favorites">
-          <button className="bg-gray-800 text-white py-2 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-200 ease-in-out">
-            즐겨찾기
-          </button>
-        </Link>
+      <div className="flex ml-8  mt-28 space-x-4">
+        <Btn />
       </div>
 
-      <UtilityBar onIconClick={toggleNavbarVisibility} />
+      <UtilityBar />
 
-      <div className="flex mt-8">
-        {/* favorites 및 deals 페이지에서는 Navbar를 숨깁니다 */}
-        {!isHiddenNavbarPage && (
-          <div ref={navbarRef}>
-            <Navbar />
-          </div>
-        )}
-        <div className="ml-4 flex-1">{children}</div>
-      </div>
+      <div className="">{children}</div>
     </div>
   );
 };

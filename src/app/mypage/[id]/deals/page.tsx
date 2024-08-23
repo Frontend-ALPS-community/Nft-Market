@@ -15,7 +15,7 @@ interface PageProps {
 const Page: React.FC<PageProps> = ({ filteredDeals = [] }) => {
   console.log(filteredDeals);
   return (
-    <div className="flex p-8 w-full bg-white shadow rounded-lg">
+    <div className="flex p-8 w-full bg-white ">
       {/* 오른쪽 콘텐츠 영역 */}
       <div className="border w-full border-gray-300 rounded-lg p-8 bg-gray-50">
         {filteredDeals.length > 0 ? (

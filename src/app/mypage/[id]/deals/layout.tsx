@@ -48,7 +48,7 @@ const Layout: React.FC<LayoutProps> = () => {
   };
 
   return (
-    <div className="flex p-8 bg-white shadow rounded-lg">
+    <div className="flex p-8 bg-white ">
       {/* 왼쪽 사이드바 */}
       <div className="w-1/4">
         <div className="space-y-4">
