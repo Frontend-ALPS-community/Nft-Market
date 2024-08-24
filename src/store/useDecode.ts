@@ -2,15 +2,15 @@ import { IDecoded } from '@/types/type';
 import { create } from 'zustand';
 
 interface StoreState {
-  decoded: IDecoded | null;
+  decoded: IDecoded;
   setDecoded: (decoded: IDecoded) => void;
   clear: () => void;
 }
 
 const useDecodedStore = create<StoreState>((set) => ({
-  decoded: null,
+  decoded: { userId: '', username: '' },
   setDecoded: (decoded: IDecoded) => set({ decoded }),
-  clear: () => set({ decoded: null }),
+  clear: () => set({ decoded: { userId: '', username: '' } }),
 }));
 
 export default useDecodedStore;

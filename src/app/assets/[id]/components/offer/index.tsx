@@ -4,19 +4,17 @@ import OfferLayout from './offerLayout';
 export interface IDetailOffer {
   id: string;
   card: {
-    offers: [
-      {
-        price: number;
-        usdPrice: number;
-        expiryDate: Date;
-        priceDifference: string;
-        proposer: string;
-      },
-    ];
+    offers: {
+      price: number;
+      usdPrice: number;
+      expiryDate: Date;
+      priceDifference: string;
+      proposer: string;
+    }[];
   };
 }
 
-const DetailOffer: React.FC<IDetailOffer> = ({ card, id }) => {
+const DetailOffer: React.FC<IDetailOffer> = ({ card }) => {
   return (
     <>
       <DetailLayout title={'offers'} arrow={true} bold={true}>
@@ -28,6 +26,7 @@ const DetailOffer: React.FC<IDetailOffer> = ({ card, id }) => {
               differ={'하한가와의 차이'}
               expire={'만료'}
               from={'From'}
+              item={false}
             />
           </div>
           <div className="py-4 border-t">
@@ -39,13 +38,13 @@ const DetailOffer: React.FC<IDetailOffer> = ({ card, id }) => {
               from="LeO_eth"
             />
           </div>
-          {card.offers.map((item) => (
+          {card?.offers.map((item) => (
             <div className="py-4 border-t">
               <OfferLayout
                 price={`${item.price} ETH`}
                 usdPrice={`$${item.usdPrice}`}
                 differ={item.priceDifference}
-                expire="1일 전"
+                expire={item.expiryDate}
                 from={item.proposer}
                 item={true}
               />

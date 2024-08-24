@@ -10,7 +10,9 @@ import { FiX } from 'react-icons/fi';
 import Select, { StylesConfig } from 'react-select';
 import ModalLayout from './modalLayout';
 
-interface IModal extends IDetailPrice {}
+interface IModal extends IDetailPrice {
+  onCardUpdated: () => void;
+}
 interface IOptions {
   value: number;
   label: string;
@@ -40,7 +42,7 @@ interface INowDate {
   period: string;
 }
 
-const Modal: React.FC<IModal> = ({ id, card }) => {
+const Modal: React.FC<IModal> = ({ id, card, onCardUpdated }) => {
   const [selectedOption, setSelectedOption] = useState<IOptions | null>(null);
   const [nowDate, setNowDate] = useState<INowDate>({
     month: dayjs().format('MMM'),
@@ -50,6 +52,7 @@ const Modal: React.FC<IModal> = ({ id, card }) => {
     period: dayjs().format('A'),
   });
   const options: IOptions[] = [
+    { value: 3, label: '3분' },
     { value: 30, label: '30분' },
     { value: 2, label: '2시간' },
     { value: 1, label: '1일' },
@@ -87,9 +90,10 @@ const Modal: React.FC<IModal> = ({ id, card }) => {
           proposer,
         };
         const res = await CardApi.createOffer(id, obj);
-        console.log(res);
+        onCardUpdated();
       }
     }
+    toggleButton();
   };
   useEffect(() => {
     if (selectedOption) {

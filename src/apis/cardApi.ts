@@ -26,4 +26,8 @@ export const CardApi = {
     const res = await Axios.get(`${PATH}/priceInfo`);
     return res.data;
   },
+  async updateFavorite(id: string, username: string) {
+    const res = await Axios.post(`${PATH}/${id}/favorites`, { username });
+    return res.data;
+  },
 };

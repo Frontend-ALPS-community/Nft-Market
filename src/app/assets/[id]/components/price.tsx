@@ -1,6 +1,5 @@
 'use client';
 import DetailLayout from '@/@components/assets/DetailLayout';
-import Modal from '@/@components/modal/modal';
 import useModal from '@/store/useModal';
 
 export interface IDetailPrice {
@@ -18,7 +17,6 @@ const DetailPrice: React.FC<IDetailPrice> = ({ id, card }) => {
   const { isButtonClicked, toggleButton } = useModal();
   return (
     <>
-      {isButtonClicked ? <Modal id={id} card={card} /> : ''}
       <DetailLayout
         title={'판매종료 2024년 8월 15일 오후 10:47'}
         arrow={false}
