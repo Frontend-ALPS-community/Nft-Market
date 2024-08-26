@@ -5,10 +5,10 @@ interface StoreState {
   toggleButton: () => void;
 }
 
-const useModal = create<StoreState>((set) => ({
+const useOfferModal = create<StoreState>((set) => ({
   isButtonClicked: false,
   toggleButton: () =>
     set((state) => ({ isButtonClicked: !state.isButtonClicked })),
 }));
 
-export default useModal;
+export default useOfferModal;

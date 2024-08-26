@@ -1,10 +1,15 @@
 'use client';
-import Modal from '@/@components/modal/modal';
+import BuyModal from '@/@components/modal/buyModal';
+import ModalLayout from '@/@components/modal/modalLayout';
+import OfferModal from '@/@components/modal/offerModal';
 import { CardApi } from '@/apis/cardApi';
 import DetailProp from '@/app/assets/[id]/components/attributes/index.';
 import DetailImg from '@/app/assets/[id]/components/img';
 import DetailInfo from '@/app/assets/[id]/components/info';
-import useModal from '@/store/useModal';
+import useOfferModal from '@/store/useOfferModal';
+import useBuyModal from '@/store/userBuyModal';
+import { calcUsdPrice } from '@/utils/calcUsdPrice';
+import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import DetailGraph from './components/graph';
 import DetailOffer from './components/offer';
@@ -40,8 +45,9 @@ interface Price {
   priceHistory: number[];
 }
 
-interface CardData {
+export interface CardData {
   image: string; // 이미지 URL 또는 경로
+  saleEndDate: Date;
   cardName: string; // 카드 이름
   owner: string; // 소유자 이름
   price: Price; // 가격 정보
@@ -54,6 +60,7 @@ interface CardData {
 
 const initialState: CardData = {
   image: '', // 기본값 빈 문자열
+  saleEndDate: dayjs().toDate(),
   cardName: '', // 기본값 빈 문자열
   owner: '', // 기본값 빈 문자열
   price: {
@@ -73,7 +80,9 @@ const initialState: CardData = {
 
 const page: React.FC<IParams> = ({ params: { id } }) => {
   const [card, setCard] = useState<CardData>(initialState);
-  const { isButtonClicked } = useModal();
+  const isOfferClicked = useOfferModal().isButtonClicked;
+  const isBuyClicked = useBuyModal().isButtonClicked;
+  const usdPrice = calcUsdPrice(card.price.currentPrice ?? 0);
   useEffect(() => {
     const fetchCard = async () => {
       try {
@@ -89,29 +98,49 @@ const page: React.FC<IParams> = ({ params: { id } }) => {
   const updateCard = async () => {
     try {
       const cardData = await CardApi.getCard(id);
-      console.log(id, '이아이디는 부모의 id)');
       setCard(cardData);
     } catch (error) {
       console.error('Failed to update card data:', error);
     }
   };
 
+  useEffect(() => {
+    if (isOfferClicked || isBuyClicked) {
+      // 모달이 열렸을 때 body에 overflow-hidden 클래스를 추가하여 스크롤 방지
+      document.body.classList.add('overflow-hidden');
+    } else {
+      // 모달이 닫혔을 때 overflow-hidden 클래스를 제거하여 스크롤 가능
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Cleanup 함수: 컴포넌트가 언마운트될 때 원래 상태로 복구
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [isOfferClicked, isBuyClicked]);
+
   return (
-    <div className="flex gap-8 m-8">
-      {isButtonClicked && (
-        <Modal id={id} card={card} onCardUpdated={updateCard} />
-      )}
-      <div className="flex-[3]">
-        <DetailImg id={id} card={card} onCardUpdated={updateCard} />
-        <DetailProp />
+    <>
+      <ModalLayout isOpen={isOfferClicked}>
+        <OfferModal id={id} card={card} onCardUpdated={updateCard} />
+      </ModalLayout>
+      <ModalLayout isOpen={isBuyClicked}>
+        <BuyModal card={card} usdPrice={usdPrice} />
+      </ModalLayout>
+
+      <div className="flex gap-8 m-8">
+        <div className="flex-[3]">
+          <DetailImg id={id} card={card} onCardUpdated={updateCard} />
+          <DetailProp />
+        </div>
+        <div className="flex-[4] flex flex-col gap-8">
+          <DetailInfo card={card} />
+          <DetailPrice card={card} id={id} usdPrice={usdPrice} />
+          <DetailGraph />
+          <DetailOffer card={card} id={id} />
+        </div>
       </div>
-      <div className="flex-[4] flex flex-col gap-8">
-        <DetailInfo card={card} />
-        <DetailPrice card={card} id={id} />
-        <DetailGraph />
-        <DetailOffer card={card} id={id} />
-      </div>
-    </div>
+    </>
   );
 };
 

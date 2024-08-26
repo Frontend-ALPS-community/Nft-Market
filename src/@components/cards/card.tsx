@@ -18,9 +18,8 @@ const Card: React.FC<CardProps> = ({
   imageUrl,
   background,
 }) => {
-  const handleButtonClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    console.log('지금 구매하기 버튼 클릭');
+  const handleButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
   };
   return (
     <>

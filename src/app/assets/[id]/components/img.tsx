@@ -26,7 +26,6 @@ const DetailImg: React.FC<IDetailImg> = ({ id, card, onCardUpdated }) => {
   };
   useEffect(() => {
     if (username) {
-      console.log(card.favorites);
       setFillHeart(card.favorites.includes(username));
     }
   }, [username, card.favorites]);
