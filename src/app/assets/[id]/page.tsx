@@ -125,7 +125,12 @@ const page: React.FC<IParams> = ({ params: { id } }) => {
         <OfferModal id={id} card={card} onCardUpdated={updateCard} />
       </ModalLayout>
       <ModalLayout isOpen={isBuyClicked}>
-        <BuyModal card={card} usdPrice={usdPrice} />
+        <BuyModal
+          id={id}
+          card={card}
+          usdPrice={usdPrice}
+          onCardUpdated={updateCard}
+        />
       </ModalLayout>
 
       <div className="flex gap-8 m-8">

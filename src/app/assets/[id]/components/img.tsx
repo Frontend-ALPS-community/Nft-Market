@@ -16,11 +16,11 @@ interface IDetailImg {
 }
 
 const DetailImg: React.FC<IDetailImg> = ({ id, card, onCardUpdated }) => {
-  const username = useDecodedStore().decoded?.username;
+  const { username, userId } = useDecodedStore().decoded;
   const [fillHeart, setFillHeart] = useState<boolean>(false);
   const onClickHeart = async () => {
     if (username) {
-      await CardApi.updateFavorite(id, username);
+      await CardApi.updateFavorite(id, { username, userId });
       onCardUpdated();
     }
   };

@@ -65,7 +65,8 @@ const OfferModal: React.FC<IOfferModal> = ({ id, card, onCardUpdated }) => {
   };
 
   const { isButtonClicked, toggleButton } = useOfferModal();
-  const proposer = useDecodedStore().decoded?.username;
+  const proposer = useDecodedStore().decoded.username;
+  const userId = useDecodedStore().decoded.userId;
   const lowerLimitPrice = usePriceInfo.getState().price?.min || 0;
   const [offerPrice, setOfferPrice] = useState<string>('');
   const onChangeOffer = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,6 +89,7 @@ const OfferModal: React.FC<IOfferModal> = ({ id, card, onCardUpdated }) => {
           lowerLimitPrice,
           price: parseFloat(offerPrice),
           proposer,
+          userId,
         };
         const res = await CardApi.createOffer(id, obj);
         onCardUpdated();
