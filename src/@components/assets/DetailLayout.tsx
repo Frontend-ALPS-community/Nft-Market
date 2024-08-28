@@ -6,6 +6,7 @@ interface IDetailLayOut extends childProps {
   title: string;
   arrow: boolean;
   bold: boolean;
+  saleDate: Date | null;
 }
 
 const DetailLayout: React.FC<IDetailLayOut> = ({
@@ -13,6 +14,7 @@ const DetailLayout: React.FC<IDetailLayOut> = ({
   children,
   arrow,
   bold,
+  saleDate,
 }) => {
   const [isClick, setIsClick] = useState<boolean>(false);
   return (
@@ -21,7 +23,11 @@ const DetailLayout: React.FC<IDetailLayOut> = ({
         <div className="flex justify-between">
           <div className="flex gap-4">
             <div>⚡</div>
-            <div className={`${bold ? 'font-semibold' : ''}`}>{title}</div>
+            {saleDate ? (
+              <div className={`${bold ? 'font-semibold' : ''}`}>{title}</div>
+            ) : (
+              <div className={`font-semibold`}>가격정보</div>
+            )}
           </div>
           <div
             className={`cursor-pointer ${arrow ? '' : 'hidden'}`}

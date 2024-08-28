@@ -2,14 +2,15 @@
 import BuyModal from '@/@components/modal/buyModal';
 import ModalLayout from '@/@components/modal/modalLayout';
 import OfferModal from '@/@components/modal/offerModal';
+import SellModal from '@/@components/modal/sellModal';
 import { CardApi } from '@/apis/cardApi';
 import DetailProp from '@/app/assets/[id]/components/attributes/index.';
 import DetailImg from '@/app/assets/[id]/components/img';
 import DetailInfo from '@/app/assets/[id]/components/info';
 import useOfferModal from '@/store/useOfferModal';
 import useBuyModal from '@/store/userBuyModal';
+import useSellModal from '@/store/useSellModal';
 import { calcUsdPrice } from '@/utils/calcUsdPrice';
-import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import DetailGraph from './components/graph';
 import DetailOffer from './components/offer';
@@ -47,7 +48,7 @@ interface Price {
 
 export interface CardData {
   image: string; // 이미지 URL 또는 경로
-  saleEndDate: Date;
+  saleEndDate: Date | null;
   cardName: string; // 카드 이름
   owner: string; // 소유자 이름
   price: Price; // 가격 정보
@@ -60,7 +61,7 @@ export interface CardData {
 
 const initialState: CardData = {
   image: '', // 기본값 빈 문자열
-  saleEndDate: dayjs().toDate(),
+  saleEndDate: null,
   cardName: '', // 기본값 빈 문자열
   owner: '', // 기본값 빈 문자열
   price: {
@@ -82,6 +83,7 @@ const page: React.FC<IParams> = ({ params: { id } }) => {
   const [card, setCard] = useState<CardData>(initialState);
   const isOfferClicked = useOfferModal().isButtonClicked;
   const isBuyClicked = useBuyModal().isButtonClicked;
+  const isSellClicked = useSellModal().isButtonClicked;
   const usdPrice = calcUsdPrice(card.price.currentPrice ?? 0);
   useEffect(() => {
     const fetchCard = async () => {
@@ -131,6 +133,9 @@ const page: React.FC<IParams> = ({ params: { id } }) => {
           usdPrice={usdPrice}
           onCardUpdated={updateCard}
         />
+      </ModalLayout>
+      <ModalLayout isOpen={isSellClicked}>
+        <SellModal />
       </ModalLayout>
 
       <div className="flex gap-8 m-8">
