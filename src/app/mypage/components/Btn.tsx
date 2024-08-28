@@ -22,9 +22,6 @@ const Btn: FC = () => {
       <Link href="/mypage/1/offers">
         <button className={getButtonClass('offers')}>내가 한 제안</button>
       </Link>
-      <Link href="/mypage/1/deals">
-        <button className={getButtonClass('deals')}>거래</button>
-      </Link>
       <Link href="/mypage/1/favorites">
         <button className={getButtonClass('favorites')}>즐겨찾기</button>
       </Link>

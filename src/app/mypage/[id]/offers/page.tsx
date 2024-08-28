@@ -1,6 +1,6 @@
 import { CardApi } from '@/apis/cardApi';
 import React from 'react';
-import OffersList from './OfferList';
+import OffersList, { Offer } from './components/OfferList';
 
 const offersData: Offer[] = [
   {
@@ -8,48 +8,90 @@ const offersData: Offer[] = [
     cardName: 'Fire Elemental',
     offeredPrice: '$100',
     date: '2024-08-01',
+    status: 'Accepted',
+    from: 'Alice',
+    to: 'Bob',
   },
   {
     id: 2,
     cardName: 'Water Elemental',
     offeredPrice: '$150',
     date: '2024-08-03',
+    status: 'Pending',
+    from: 'Charlie',
+    to: 'Dave',
   },
   {
     id: 3,
     cardName: 'Earth Elemental',
     offeredPrice: '$200',
     date: '2024-08-05',
+    status: 'Declined',
+    from: 'Eve',
+    to: 'Frank',
   },
   {
     id: 4,
-    cardName: 'Wind Elemental',
+    cardName: 'Air Elemental',
     offeredPrice: '$120',
     date: '2024-08-07',
+    status: 'Accepted',
+    from: 'Grace',
+    to: 'Helen',
   },
   {
     id: 5,
-    cardName: 'Lightning Elemental',
+    cardName: 'Spirit Elemental',
     offeredPrice: '$180',
     date: '2024-08-09',
+    status: 'Pending',
+    from: 'Ian',
+    to: 'Jack',
   },
   {
     id: 6,
-    cardName: 'Ice Elemental',
+    cardName: 'Shadow Elemental',
     offeredPrice: '$140',
     date: '2024-08-11',
+    status: 'Accepted',
+    from: 'Kelly',
+    to: 'Liam',
   },
   {
     id: 7,
-    cardName: 'Shadow Elemental',
+    cardName: 'Light Elemental',
     offeredPrice: '$220',
     date: '2024-08-13',
+    status: 'Declined',
+    from: 'Mia',
+    to: 'Noah',
   },
   {
     id: 8,
-    cardName: 'Light Elemental',
+    cardName: 'Ice Elemental',
     offeredPrice: '$250',
     date: '2024-08-15',
+    status: 'Accepted',
+    from: 'Olivia',
+    to: 'Peter',
+  },
+  {
+    id: 9,
+    cardName: 'Lightning Elemental',
+    offeredPrice: '$90',
+    date: '2024-08-17',
+    status: 'Pending',
+    from: 'Quinn',
+    to: 'Rachel',
+  },
+  {
+    id: 10,
+    cardName: 'Metal Elemental',
+    offeredPrice: '$200',
+    date: '2024-08-19',
+    status: 'Accepted',
+    from: 'Steve',
+    to: 'Tina',
   },
 ];
 export interface CardItem {

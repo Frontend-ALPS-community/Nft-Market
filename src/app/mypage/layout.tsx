@@ -1,4 +1,3 @@
-import UtilityBar from '@/@components/utilityBar/page';
 import Image from 'next/image';
 
 import React, { ReactNode } from 'react';
@@ -30,8 +29,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <div className="flex ml-8  mt-28 space-x-4">
         <Btn />
       </div>
-
-      <UtilityBar />
 
       <div className="">{children}</div>
     </div>

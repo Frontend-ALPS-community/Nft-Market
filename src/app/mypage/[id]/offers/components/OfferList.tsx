@@ -5,11 +5,14 @@ import React, { useState } from 'react';
 import SortButtons from './SortBtn';
 import { CardItem } from './page';
 
-interface Offer {
+export interface Offer {
   id: number;
   cardName: string;
   offeredPrice: string;
   date: string;
+  status: 'Pending' | 'Accepted' | 'Declined'; // 제안 상태 추가
+  from: string; // 발신자 추가
+  to: string; // 수신자 추가
 }
 
 interface OffersListProps {
@@ -33,13 +36,13 @@ const OffersList: React.FC<OffersListProps> = ({ offers, res }) => {
     }
   });
 
-  //정렬 로직 : page.tsx에서 정보 요청-> 리스트컴포넌트에서 받음->
-  // 정렬함수에 넣음-> 모듈화 된 버튼에 따라 함수 실행. 가격순 정렬인지/날짜순 정렬인지 boolean체크
-
   return (
     <div>
       <SortButtons
-        onSortByPrice={() => setPriceAsc(!priceAsc)}
+        onSortByPrice={() => {
+          setDateAsc(null);
+          setPriceAsc(!priceAsc);
+        }}
         onSortByDate={() => {
           setPriceAsc(null);
           setDateAsc(!dateAsc);
@@ -48,23 +51,26 @@ const OffersList: React.FC<OffersListProps> = ({ offers, res }) => {
         dateAsc={dateAsc}
       />
       <div className="mt-6 space-y-4">
-        {res.map((offer) => (
-          <Link key={offer._id} href={`/assets/${offer._id}`} className="mb-2">
+        {sortedOffers.map((offer) => (
+          <Link key={offer.id} href={`/assets/${offer.id}`}>
             <div className="block p-4 bg-gray-100 rounded-lg shadow-sm justify-between items-center cursor-pointer mb-4">
               <div className="flex">
-                {/* 이미지 컴포넌트 또는 이미지 태그가 위치할 곳 */}
                 <Image
                   width={100}
                   height={100}
-                  alt="offerImage"
+                  alt={offer.cardName}
                   src={process.env.NEXT_PUBLIC_Backend_URL + offer.image}
+                  unoptimized // Next.js 환경에서 최적화 설정을 무시
+                  //sortedOffers로하면 목데이터, res로 하면 불러온 데이터 사용.
                 />
-                <div>
+                <div className="ml-4">
                   <h2 className="text-lg font-semibold">{offer.cardName}</h2>
-                  <p className="text-gray-600">
-                    제안 가격: {offer.price.lastPrice}
+                  <p>제안 가격: {offer.offeredPrice}</p>
+                  <p>상태: {offer.status}</p>
+                  <p>날짜: {offer.date}</p>
+                  <p>
+                    From: {offer.from} ➡️ To: {offer.to}
                   </p>
-                  {/* <p className="text-gray-500">날짜: {offer.date}</p> */}
                 </div>
               </div>
             </div>
