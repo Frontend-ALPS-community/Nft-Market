@@ -21,7 +21,7 @@ const Page: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-[calc(100vh-8vh)] overflow-hidden centered-flex bg-gradient-to-r from-blue-400 to-purple-600">
+    <div className="relative w-full h-[calc(100vh-8vh)] overflow-hidden centered-flex ">
       <div
         className={`w-[550px] h-[700px] transition-transform duration-500 transform ${
           isSignup ? 'translate-x-full' : ''
