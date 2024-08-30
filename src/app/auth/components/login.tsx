@@ -1,4 +1,5 @@
 import { authApi } from '@/apis/authApi';
+import useAuthStore from '@/store/useAuth';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
@@ -6,12 +7,15 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const router = useRouter();
+  const { setAuthState } = useAuthStore();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       const res = await authApi.login({ email, password });
+      const { loggedIn } = await authApi.status();
+      setAuthState(loggedIn);
       router.push('/');
     } catch (err) {
       console.log(err);
