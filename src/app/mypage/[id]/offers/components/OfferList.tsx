@@ -52,25 +52,24 @@ const OffersList: React.FC<OffersListProps> = ({ offers, res }) => {
       />
       <div className="mt-6 space-y-4">
         {sortedOffers.map((offer) => (
-          <Link key={offer.id} href={`/assets/${offer.id}`}>
-            <div className="block p-4 bg-gray-100 rounded-lg shadow-sm justify-between items-center cursor-pointer mb-4">
-              <div className="flex">
+          <Link key={offer.id} href={`/assets/${offer.id}`} passHref>
+            <div className="block p-4 bg-gray-50 hover:bg-gray-200 rounded-lg shadow-sm transition duration-150 ease-in-out mb-4">
+              <div className="grid grid-cols-5 items-center">
                 <Image
-                  width={100}
-                  height={100}
+                  className="col-span-1"
+                  width={50}
+                  height={50}
                   alt={offer.cardName}
-                  src={process.env.NEXT_PUBLIC_Backend_URL + offer.image}
-                  unoptimized // Next.js 환경에서 최적화 설정을 무시
-                  //sortedOffers로하면 목데이터, res로 하면 불러온 데이터 사용.
+                  src="/path/to/default/image.jpg"
+                  unoptimized
                 />
-                <div className="ml-4">
-                  <h2 className="text-lg font-semibold">{offer.cardName}</h2>
-                  <p>제안 가격: {offer.offeredPrice}</p>
-                  <p>상태: {offer.status}</p>
-                  <p>날짜: {offer.date}</p>
-                  <p>
-                    From: {offer.from} ➡️ To: {offer.to}
-                  </p>
+                <div className="col-span-1 text-center">{offer.cardName}</div>
+                <div className="col-span-1 text-center">
+                  {offer.offeredPrice}
+                </div>
+                <div className="col-span-1 text-center">{offer.status}</div>
+                <div className="col-span-1 text-center">
+                  From: {offer.from} ➡️ To: {offer.to}
                 </div>
               </div>
             </div>
