@@ -18,9 +18,8 @@ const Card: React.FC<CardProps> = ({
   imageUrl,
   background,
 }) => {
-  const handleButtonClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    console.log('지금 구매하기 버튼 클릭');
+  const handleButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
   };
   return (
     <>
@@ -40,8 +39,10 @@ const Card: React.FC<CardProps> = ({
         </div>
         <div className="m-4">
           <p className="my-4 font-bold">{title}</p>
-          <p className="my-2 font-semibold">{price} AQC</p>
-          <p>마지막 판매 : {lastPrice} AQC</p>
+          <p className={`my-2 font-semibold ${price ? '' : 'invisible'}`}>
+            {price} ETH
+          </p>
+          <p>마지막 판매 : {lastPrice} ETH</p>
         </div>
         <div
           onClick={handleButtonClick}

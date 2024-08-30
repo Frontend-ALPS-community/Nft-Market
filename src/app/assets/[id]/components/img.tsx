@@ -1,20 +1,51 @@
+'use client';
+import { CardApi } from '@/apis/cardApi';
+import useDecodedStore from '@/store/useDecode';
+import { useEffect, useState } from 'react';
+import { FiHeart } from 'react-icons/fi';
+import { CardAttributes } from '../page';
+
 interface IDetailImg {
-  img: string;
-  background: string;
+  id: string;
+  card: {
+    image: string;
+    attributes: CardAttributes;
+    favorites: string[];
+  };
+  onCardUpdated: () => void;
 }
 
-const DetailImg: React.FC<IDetailImg> = ({ img, background }) => {
+const DetailImg: React.FC<IDetailImg> = ({ id, card, onCardUpdated }) => {
+  const { username, userId } = useDecodedStore().decoded;
+  const [fillHeart, setFillHeart] = useState<boolean>(false);
+  const onClickHeart = async () => {
+    if (username) {
+      await CardApi.updateFavorite(id, { username, userId });
+      onCardUpdated();
+    }
+  };
+  useEffect(() => {
+    if (username) {
+      setFillHeart(card.favorites.includes(username));
+    }
+  }, [username, card.favorites]);
   return (
     <div>
       <div
-        style={{ backgroundColor: background }}
+        style={{ backgroundColor: card?.attributes.background }}
         className={`aspect-square rounded-lg centered-flex relative`}
       >
-        <div className="absolute right-2 top-2 text-2xl">❤</div>
+        <div className="absolute right-2 top-2 text-2xl">
+          <FiHeart
+            color={`${fillHeart ? 'red' : ''}`}
+            fill={`${fillHeart ? 'red' : 'none'}`}
+            onClick={onClickHeart}
+            className="cursor-pointer"
+          />
+        </div>
         <img
           alt="이미지"
-          src={process.env.NEXT_PUBLIC_Backend_URL + img}
-          className=""
+          src={process.env.NEXT_PUBLIC_Backend_URL + card?.image}
         />
       </div>
     </div>
