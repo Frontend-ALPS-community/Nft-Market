@@ -85,6 +85,11 @@ const page: React.FC<IParams> = ({ params: { id } }) => {
   const isBuyClicked = useBuyModal().isButtonClicked;
   const isSellClicked = useSellModal().isButtonClicked;
   const usdPrice = calcUsdPrice(card.price.currentPrice ?? 0);
+  const maxOffer =
+    card.offers.length > 0
+      ? Math.max(...card.offers.map((offer) => offer.price))
+      : 0;
+
   useEffect(() => {
     const fetchCard = async () => {
       try {
@@ -107,7 +112,7 @@ const page: React.FC<IParams> = ({ params: { id } }) => {
   };
 
   useEffect(() => {
-    if (isOfferClicked || isBuyClicked) {
+    if (isOfferClicked || isBuyClicked || isSellClicked) {
       // 모달이 열렸을 때 body에 overflow-hidden 클래스를 추가하여 스크롤 방지
       document.body.classList.add('overflow-hidden');
     } else {
@@ -119,12 +124,17 @@ const page: React.FC<IParams> = ({ params: { id } }) => {
     return () => {
       document.body.classList.remove('overflow-hidden');
     };
-  }, [isOfferClicked, isBuyClicked]);
+  }, [isOfferClicked, isBuyClicked, isSellClicked]);
 
   return (
     <>
       <ModalLayout isOpen={isOfferClicked}>
-        <OfferModal id={id} card={card} onCardUpdated={updateCard} />
+        <OfferModal
+          id={id}
+          card={card}
+          onCardUpdated={updateCard}
+          maxOffer={maxOffer}
+        />
       </ModalLayout>
       <ModalLayout isOpen={isBuyClicked}>
         <BuyModal
@@ -135,7 +145,7 @@ const page: React.FC<IParams> = ({ params: { id } }) => {
         />
       </ModalLayout>
       <ModalLayout isOpen={isSellClicked}>
-        <SellModal />
+        <SellModal id={id} card={card} onCardUpdated={updateCard} />
       </ModalLayout>
 
       <div className="flex gap-8 m-8">

@@ -33,10 +33,13 @@ const DetailPrice: React.FC<IDetailPrice> = ({ id, card, usdPrice }) => {
   return (
     <>
       <DetailLayout
-        title={`판매종료 ${date.year}년 ${date.month}월 ${date.day}일 ${date.hour}:${date.minute}`}
+        title={
+          saleDate
+            ? `판매종료 ${date.year}년 ${date.month}월 ${date.day}일 ${date.hour}:${date.minute}`
+            : '가격정보'
+        }
         arrow={false}
         bold={false}
-        saleDate={saleDate}
       >
         <div className={`flex flex-col gap-4 m-4`}>
           <div className={`${price ? '' : 'hidden'}`}>
@@ -54,7 +57,7 @@ const DetailPrice: React.FC<IDetailPrice> = ({ id, card, usdPrice }) => {
           </div>
           <div className="flex gap-4">
             <button
-              className={`flex-1 rounded-lg bg-theme-text-blue py-2 text-white font-semibold`}
+              className={`flex-1 rounded-lg bg-theme-text-blue py-2 text-white font-semibold ${!isOwner && !price ? 'hidden' : ''}`}
               onClick={isOwner ? toggleSellButton : toggleBuyButton}
             >
               {isOwner ? '판매하기' : '지금 구매하기'}

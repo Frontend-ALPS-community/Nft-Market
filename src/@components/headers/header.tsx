@@ -19,6 +19,7 @@ const Header = () => {
         setDecoded({
           userId: res.decoded.userId,
           username: res.decoded.username,
+          wallet: res.decoded.wallet,
         });
       }
     } catch (err) {

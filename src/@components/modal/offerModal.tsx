@@ -12,6 +12,7 @@ interface IOfferModal {
   id: string;
   card: CardData;
   onCardUpdated: () => void;
+  maxOffer: number;
 }
 interface IOptions {
   value: number;
@@ -42,7 +43,12 @@ interface INowDate {
   period: string;
 }
 
-const OfferModal: React.FC<IOfferModal> = ({ id, card, onCardUpdated }) => {
+const OfferModal: React.FC<IOfferModal> = ({
+  id,
+  card,
+  onCardUpdated,
+  maxOffer,
+}) => {
   const [selectedOption, setSelectedOption] = useState<IOptions | null>(null);
   const [nowDate, setNowDate] = useState<INowDate>({
     month: dayjs().format('MMM'),
@@ -66,8 +72,9 @@ const OfferModal: React.FC<IOfferModal> = ({ id, card, onCardUpdated }) => {
 
   const { isButtonClicked, toggleButton } = useOfferModal();
   const proposer = useDecodedStore().decoded.username;
-  const userId = useDecodedStore().decoded.userId;
+  const { userId, wallet } = useDecodedStore().decoded;
   const lowerLimitPrice = usePriceInfo.getState().price?.min || 0;
+
   const [offerPrice, setOfferPrice] = useState<string>('');
   const onChangeOffer = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOfferPrice(e.target.value);
@@ -142,7 +149,7 @@ const OfferModal: React.FC<IOfferModal> = ({ id, card, onCardUpdated }) => {
       <div className="bg-theme-bg-gray rounded-lg p-4 m-4">
         <div className="between-flex m-1">
           <div>잔액</div>
-          <div>0 ETH</div>
+          <div>{wallet} ETH</div>
         </div>
         <div className="between-flex m-1">
           <div>하한가</div>
@@ -150,7 +157,7 @@ const OfferModal: React.FC<IOfferModal> = ({ id, card, onCardUpdated }) => {
         </div>
         <div className="between-flex m-1">
           <div>최고 제안가</div>
-          <div>0 ETH</div>
+          <div>{maxOffer} ETH</div>
         </div>
       </div>
       <div className="m-4">

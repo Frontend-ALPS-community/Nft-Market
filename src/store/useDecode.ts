@@ -8,9 +8,9 @@ interface StoreState {
 }
 
 const useDecodedStore = create<StoreState>((set) => ({
-  decoded: { userId: '', username: '' },
+  decoded: { userId: '', username: '', wallet: 0 },
   setDecoded: (decoded: IDecoded) => set({ decoded }),
-  clear: () => set({ decoded: { userId: '', username: '' } }),
+  clear: () => set({ decoded: { userId: '', username: '', wallet: 0 } }),
 }));
 
 export default useDecodedStore;

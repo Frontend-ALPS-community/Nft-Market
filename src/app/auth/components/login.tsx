@@ -10,7 +10,6 @@ const Login: React.FC = () => {
     decoded: state.decoded,
     setDecoded: state.setDecoded,
   }));
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -21,6 +20,7 @@ const Login: React.FC = () => {
         setDecoded({
           userId: res.decoded.userId,
           username: res.decoded.username,
+          wallet: res.decoded.wallet,
         });
       }
     } catch (err) {

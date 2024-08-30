@@ -7,5 +7,5 @@ export interface childProps {
 export interface IDecoded {
   userId: string;
   username: string;
+  wallet: number;
 }
-

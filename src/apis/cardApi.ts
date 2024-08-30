@@ -41,4 +41,9 @@ export const CardApi = {
     const res = await Axios.post(`${PATH}/${id}/purchaseCard`, { userId });
     return res.data;
   },
+
+  async sellStart(id: string, price: number) {
+    const res = await Axios.post(`${PATH}/${id}/sellSetting`, { price });
+    return res.data;
+  },
 };
