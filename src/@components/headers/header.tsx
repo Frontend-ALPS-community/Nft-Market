@@ -1,68 +1,124 @@
 'use client';
 import { authApi } from '@/apis/authApi';
-import Image from 'next/image';
+import usePriceInfo from '@/store/usePriceInfo';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 
 const Header = () => {
+  const { price, setPrice } = usePriceInfo((state) => ({
+    price: state.price,
+    setPrice: state.setPrice,
+  }));
+  useEffect(() => {
+    setPrice();
+  }, []);
+  const [authState, setAuthState] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const onClickLogOutBtn = async () => {
-    const res = await authApi.logout();
+    try {
+      await authApi.logout();
+      alert('로그아웃되었습니다.');
+      setAuthState(false);
+      router.push('/');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
   };
+
+  const checkTokenStatus = async () => {
+    try {
+      const { loggedIn } = await authApi.status();
+      setAuthState(loggedIn);
+    } catch (error) {
+      console.error('Failed to check token status:', error);
+    }
+  };
+
+  useEffect(() => {
+    // 초기화
+    checkTokenStatus();
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        dropdownRef.current.classList.add('hidden');
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const toggleDropdown = () => {
+    dropdownRef.current?.classList.toggle('hidden');
+  };
+
   return (
-    <>
-      <div className="min-w-[380px] w-full h-[80px] bg-slate-200 flex justify-between items-center px-[15px]">
-        <Link href="/" className="flex items-center">
-          <img width={50} src="assets/logo/miniLogo.png" alt="Logo" />
-          <div>서비스명</div>
-        </Link>
-        <div className="flex text-xs sm:text-base items-center">
-          <Link
-            href="/auth?type=login"
-            className="mr-[10px] h-10 rounded-lg p-2 bg-slate-300 hover:bg-slate-400"
-          >
-            로그인
-          </Link>
-          <Link
-            href="/auth?type=signup"
-            className="mr-[10px] h-10 rounded-lg p-2 bg-slate-300 hover:bg-slate-400"
-          >
-            회원가입
-          </Link>
-          <div className="relative group">
-            <div className="hover:-rotate-180 transition-transform duration-300">
-              <Image
-                width={40}
-                height={40}
-                src="/assets/logo/drop.png"
-                alt="Category Logo"
-              />
-            </div>
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 shadow-lg rounded-lg hidden group-hover:block ">
-              <div className="py-1">
-                <Link
-                  href="/category/1"
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                >
-                  Category 1
-                </Link>
-                <Link
-                  href="/category/2"
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                >
-                  Category 2
-                </Link>
-                <Link
-                  href="/category/3"
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                >
-                  Category 3
-                </Link>
-              </div>
+    <div className="min-w-[380px] w-full h-[80px] bg-gradient-to-r from-blue-500 to-purple-500 between-flex px-[20px] shadow-lg">
+      <Link href="/" className="flex-center">
+        <img
+          width={50}
+          src="/assets/logo/miniLogo.png"
+          alt="Logo"
+          className="mr-[10px]"
+        />
+        <div className="text-white font-semibold text-lg">Service Name</div>
+      </Link>
+      <div className="relative flex-center">
+        {authState ? (
+          <div className="relative z-50">
+            <button
+              onClick={toggleDropdown}
+              className="h-10 w-10 rounded-full bg-white centered-flex"
+            >
+              <img src="/assets/logo/my.png" alt="My" />
+            </button>
+            <div
+              ref={dropdownRef}
+              className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden"
+            >
+              <Link
+                href="/mypage"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-300 hover:text-white transition ease-in-out transform hover:scale-105"
+              >
+                마이 페이지
+              </Link>
+              <button
+                onClick={() => {
+                  onClickLogOutBtn();
+                  dropdownRef.current?.classList.add('hidden');
+                }}
+                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-red-300 hover:text-white transition ease-in-out transform hover:scale-105"
+              >
+                로그아웃
+              </button>
             </div>
           </div>
-          <button onClick={onClickLogOutBtn}>로그아웃</button>
-        </div>
+        ) : (
+          <>
+            <Link
+              href="/auth?type=login"
+              className="mr-[10px] h-10 rounded-full px-4 bg-white text-blue-500 hover:bg-blue-600 hover:text-white transition centered-flex"
+            >
+              로그인
+            </Link>
+            <Link
+              href="/auth?type=signup"
+              className="mr-[10px] h-10 rounded-full px-4 bg-white text-blue-500 hover:bg-blue-600 hover:text-white transition centered-flex"
+            >
+              회원가입
+            </Link>
+          </>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,32 +1,55 @@
+'use client';
+import Link from 'next/link';
+
 interface CardProps {
+  id: string;
   title: string;
-  description: string;
+  price: number;
+  lastPrice: number;
   imageUrl: string;
-  aspectRatio: string;
+  background: string;
 }
 
 const Card: React.FC<CardProps> = ({
+  id,
   title,
-  description,
+  price,
+  lastPrice,
   imageUrl,
-  aspectRatio,
+  background,
 }) => {
+  const handleButtonClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    console.log('지금 구매하기 버튼 클릭');
+  };
   return (
     <>
-      <div className="bg-white border border-gray-300 rounded-lg shadow-md m-4 w-[250px]">
-        <div className="aspect-square">
+      <Link
+        href={`/assets/${id}`}
+        className="bg-white rounded-lg shadow-md m-4 max-w-[250px] min-w-[200px] cursor-pointer flex-grow relative group overflow-hidden"
+      >
+        <div
+          style={{ backgroundColor: background }}
+          className={`aspect-square overflow-hidden rounded-lg outline-none`}
+        >
           <img
             alt="이미지"
-            src="/"
-            className="min-w-[200px] w-full h-full bg-red-400"
+            src={process.env.NEXT_PUBLIC_Backend_URL + imageUrl}
+            className="w-full h-full transition-transform transform group-hover:scale-110 duration-300"
           />
         </div>
         <div className="m-4">
-          <p className="my-4 font-bold">monster #1234</p>
-          <p className="my-2 font-semibold">0.319 AQC</p>
-          <p>마지막 판매 : 0.294 AQC</p>
+          <p className="my-4 font-bold">{title}</p>
+          <p className="my-2 font-semibold">{price} AQC</p>
+          <p>마지막 판매 : {lastPrice} AQC</p>
         </div>
-      </div>
+        <div
+          onClick={handleButtonClick}
+          className="absolute bottom-0 left-0 right-0 bg-theme-text-blue text-white text-center py-2 opacity-0 transform translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+        >
+          지금 구매하기
+        </div>
+      </Link>
     </>
   );
 };
