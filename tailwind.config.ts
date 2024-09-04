@@ -19,6 +19,7 @@ const config: Config = {
         theme: {
           'text-blue': '#2081E2',
           'text-gray': '#545454',
+          'border-gray': '#d9d9d9',
           'text-black': '#121212',
           'text-white': '#FFFFFF',
           'bg-gray': '#F3F3F3',
