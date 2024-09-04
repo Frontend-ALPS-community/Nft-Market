@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import React, { ReactNode } from 'react';
-import Btn from './components/btn';
+import Btn from './components/Btn';
 
 interface LayoutProps {
   children: ReactNode;

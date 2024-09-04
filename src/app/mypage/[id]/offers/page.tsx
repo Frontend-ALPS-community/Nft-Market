@@ -1,4 +1,4 @@
-import { CardApi } from '@/apis/cardApi';
+import { authApi } from '@/apis/authApi';
 import React from 'react';
 import OffersList, { Offer } from './components/OfferList';
 
@@ -106,7 +106,10 @@ export interface CardItem {
 } //카드 콜렉션이랑 똑같음
 
 const Page: React.FC = async () => {
-  const res = await CardApi.getAllCard();
+  //const res = await CardApi.getAllCard();
+  // const res = await authApi.offers();
+  const res = await authApi.status();
+  console.log(res);
   return (
     <div className="p-8 bg-white shadow rounded-lg">
       <h1 className="text-2xl font-bold mb-4">제안</h1>

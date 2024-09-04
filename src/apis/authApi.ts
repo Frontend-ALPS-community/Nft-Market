@@ -32,7 +32,15 @@ export const authApi = {
   },
 
   async status() {
-    const res = await Axios.get(PATH + '/status');
+    const res = await Axios.get(PATH + '/status', { withCredentials: true });
     return res.data;
+  },
+  async offers(userId: string) {
+    try {
+      const res = await Axios.post(PATH + '/offers', { userId }); // POST 요청으로 변경하고 userId를 포함
+      return res.data;
+    } catch (error) {
+      console.error('Error fetching offers:', error);
+    }
   },
 };
