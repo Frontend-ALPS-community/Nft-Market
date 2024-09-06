@@ -7,6 +7,7 @@ import { CardApi } from '@/apis/cardApi';
 import DetailProp from '@/app/assets/[id]/components/attributes/index.';
 import DetailImg from '@/app/assets/[id]/components/img';
 import DetailInfo from '@/app/assets/[id]/components/info';
+import useDecodedStore from '@/store/useDecode';
 import useOfferModal from '@/store/useOfferModal';
 import useBuyModal from '@/store/userBuyModal';
 import useSellModal from '@/store/useSellModal';
@@ -15,6 +16,7 @@ import { useEffect, useState } from 'react';
 import DetailGraph from './components/graph';
 import DetailOffer from './components/offer';
 import DetailPrice from './components/price';
+import DetailTransaction from './components/transaction';
 
 interface IParams {
   params: { id: string };
@@ -33,7 +35,7 @@ interface Offer {
   proposer: string;
 }
 
-interface Transaction {
+export interface Transaction {
   price: number;
   from: string;
   to: string;
@@ -79,11 +81,12 @@ const initialState: CardData = {
   transaction: [], // 기본값 빈 배열
 };
 
-const page: React.FC<IParams> = ({ params: { id } }) => {
+const Page: React.FC<IParams> = ({ params: { id } }) => {
   const [card, setCard] = useState<CardData>(initialState);
   const isOfferClicked = useOfferModal().isButtonClicked;
   const isBuyClicked = useBuyModal().isButtonClicked;
   const isSellClicked = useSellModal().isButtonClicked;
+  const { username } = useDecodedStore().decoded;
   const usdPrice = calcUsdPrice(card.price.currentPrice ?? 0);
   const maxOffer =
     card.offers.length > 0
@@ -147,21 +150,28 @@ const page: React.FC<IParams> = ({ params: { id } }) => {
       <ModalLayout isOpen={isSellClicked}>
         <SellModal id={id} card={card} onCardUpdated={updateCard} />
       </ModalLayout>
-
-      <div className="flex gap-8 m-8">
-        <div className="flex-[3]">
-          <DetailImg id={id} card={card} onCardUpdated={updateCard} />
-          <DetailProp />
+      <div className="m-8">
+        <div className="flex gap-8">
+          <div className="flex-[3]">
+            <DetailImg id={id} card={card} onCardUpdated={updateCard} />
+            <DetailProp card={card} />
+          </div>
+          <div className="flex-[4] flex flex-col gap-8">
+            <DetailInfo card={card} />
+            <DetailPrice
+              card={card}
+              id={id}
+              usdPrice={usdPrice}
+              username={username}
+            />
+            <DetailGraph card={card} />
+            <DetailOffer card={card} username={username} />
+          </div>
         </div>
-        <div className="flex-[4] flex flex-col gap-8">
-          <DetailInfo card={card} />
-          <DetailPrice card={card} id={id} usdPrice={usdPrice} />
-          <DetailGraph />
-          <DetailOffer card={card} id={id} />
-        </div>
+        <DetailTransaction card={card} id={id} />
       </div>
     </>
   );
 };
 
-export default page;
+export default Page;

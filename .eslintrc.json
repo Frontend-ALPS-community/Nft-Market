@@ -3,6 +3,7 @@
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error",
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "react/jsx-key": "warn"
   }
 }

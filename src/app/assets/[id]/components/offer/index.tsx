@@ -1,20 +1,16 @@
 import DetailLayout from '@/@components/assets/DetailLayout';
+import { useState } from 'react';
+import { CardData } from '../../page';
 import OfferLayout from './offerLayout';
 
 export interface IDetailOffer {
-  id: string;
-  card: {
-    offers: {
-      price: number;
-      usdPrice: number;
-      expiryDate: Date;
-      priceDifference: string;
-      proposer: string;
-    }[];
-  };
+  card: CardData;
+  username: string;
 }
 
-const DetailOffer: React.FC<IDetailOffer> = ({ card }) => {
+const DetailOffer: React.FC<IDetailOffer> = ({ card, username }) => {
+  const isOwner = card.owner === username ? true : false;
+  const [sellPrice, setSellPrice] = useState<number>();
   return (
     <>
       <DetailLayout title={'offers'} arrow={true} bold={true}>
@@ -27,15 +23,7 @@ const DetailOffer: React.FC<IDetailOffer> = ({ card }) => {
               expire={'만료'}
               from={'From'}
               item={false}
-            />
-          </div>
-          <div className="py-4 border-t">
-            <OfferLayout
-              price={'0.5088 ETH'}
-              usdPrice="$1,329.80"
-              differ="82% 위"
-              expire="1일 전"
-              from="LeO_eth"
+              isOwner={false}
             />
           </div>
           {card?.offers.map((item) => (
@@ -47,6 +35,7 @@ const DetailOffer: React.FC<IDetailOffer> = ({ card }) => {
                 expire={item.expiryDate}
                 from={item.proposer}
                 item={true}
+                isOwner={isOwner}
               />
             </div>
           ))}
