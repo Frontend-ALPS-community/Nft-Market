@@ -1,3 +1,4 @@
+'use client';
 import { authApi } from '@/apis/authApi';
 import useAuthStore from '@/store/useAuth';
 import useUserIdStore from '@/store/useUserId';
