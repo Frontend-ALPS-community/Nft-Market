@@ -3,24 +3,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import SortButtons from './SortBtn';
-import { CardItem } from './page';
 
 export interface Offer {
   id: number;
   cardName: string;
   offeredPrice: string;
   date: string;
-  status: 'Pending' | 'Accepted' | 'Declined'; // 제안 상태 추가
-  from: string; // 발신자 추가
-  to: string; // 수신자 추가
+  to: string; // 수신자
 }
 
 interface OffersListProps {
   offers: Offer[];
-  res: CardItem[];
+  //res: CardItem[];
 }
 
-const OffersList: React.FC<OffersListProps> = ({ offers, res }) => {
+const OffersList: React.FC<OffersListProps> = ({ offers }) => {
   const [priceAsc, setPriceAsc] = useState<boolean | null>(true);
   const [dateAsc, setDateAsc] = useState<boolean | null>(null);
 
@@ -54,7 +51,7 @@ const OffersList: React.FC<OffersListProps> = ({ offers, res }) => {
         {sortedOffers.map((offer) => (
           <Link key={offer.id} href={`/assets/${offer.id}`} passHref>
             <div className="block p-4 bg-gray-50 hover:bg-gray-200 rounded-lg shadow-sm transition duration-150 ease-in-out mb-4">
-              <div className="grid grid-cols-5 items-center">
+              <div className="grid grid-cols-4 items-center">
                 <Image
                   className="col-span-1"
                   width={50}
@@ -67,9 +64,8 @@ const OffersList: React.FC<OffersListProps> = ({ offers, res }) => {
                 <div className="col-span-1 text-center">
                   {offer.offeredPrice}
                 </div>
-                <div className="col-span-1 text-center">{offer.status}</div>
                 <div className="col-span-1 text-center">
-                  From: {offer.from} ➡️ To: {offer.to}
+                  To: {offer.to} {/* 수신자 정보 유지 */}
                 </div>
               </div>
             </div>
