@@ -10,7 +10,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = async ({ children }) => {
   const username = useStatusStore((state) => state.username);
-  console.log(username);
+  //console.log(username);
   return (
     <div className="min-h-screen">
       <div className="bg-theme-bg-gray h-64 md:h-80 p-4 md:p-8 w-full flex flex-col relative">

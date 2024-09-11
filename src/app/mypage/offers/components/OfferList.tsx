@@ -22,7 +22,7 @@ const OffersList: React.FC<OffersListProps> = ({ offers }) => {
   const [priceAsc, setPriceAsc] = useState<boolean | null>(true);
   const [dateAsc, setDateAsc] = useState<boolean | null>(null);
   const [cardsData, setCardsData] = useState<{ [key: string]: any }>({}); // cardId에 대한 카드 데이터를 저장하는 상태
-  console.log(offers);
+  //console.log(offers);
   useEffect(() => {
     const fetchCardData = async (cardId: string) => {
       try {

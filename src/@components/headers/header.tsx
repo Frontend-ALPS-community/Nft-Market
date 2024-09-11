@@ -1,6 +1,7 @@
 'use client';
 import { authApi } from '@/apis/authApi';
 import useAuthStore from '@/store/useAuth';
+import useDecodedStore from '@/store/useDecode';
 import usePriceInfo from '@/store/usePriceInfo';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -11,8 +12,25 @@ const Header = () => {
     price: state.price,
     setPrice: state.setPrice,
   }));
+  const setDecoded = useDecodedStore().setDecoded;
+  const fetchUserStatus = async () => {
+    try {
+      const res = await authApi.status();
+      if (res.loggedIn === true) {
+        setDecoded({
+          userId: res.decoded.userId,
+          username: res.decoded.username,
+          wallet: res.decoded.wallet,
+        });
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     setPrice();
+    fetchUserStatus();
   }, []);
 
   const dropdownRef = useRef<HTMLDivElement>(null);

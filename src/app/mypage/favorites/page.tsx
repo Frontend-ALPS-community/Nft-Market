@@ -14,9 +14,9 @@ const Page: React.FC = () => {
       if (userId) {
         try {
           const res = await authApi.favorites(userId);
-          console.log(res);
+          // console.log(res);
           setFavorites(res); // 상태에 API에서 받은 데이터를 저장
-          console.log('Fetched favorites:', favorites); // 응답 데이터 확인
+          // console.log('Fetched favorites:', favorites); // 응답 데이터 확인
         } catch (error) {
           console.error('Error fetching offers:', error);
         }

@@ -18,6 +18,8 @@ const CardCollection: React.FC<CardListProps> = ({ res }) => {
           lastPrice={item.price.lastPrice}
           imageUrl={item.image}
           background={item.attributes.background}
+          onClick={() => {}}
+          viewMode="grid"
         />
       ))}
     </div>
