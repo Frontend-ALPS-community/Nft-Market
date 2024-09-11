@@ -84,7 +84,7 @@ const Header = () => {
           <div className="relative z-50">
             <button
               onClick={toggleDropdown}
-              className="h-8 sm:h-10 w-8 sm:w-10 rounded-full bg-gray-200 flex items-center justify-center"
+              className="h-8 sm:h-14 w-8 sm:w-14 rounded-full bg-white flex items-center justify-center"
             >
               <img src="/assets/logo/my.png" alt="My" />
             </button>
@@ -93,7 +93,7 @@ const Header = () => {
               className="absolute right-0 mt-2 w-40 sm:w-48 bg-white rounded-md shadow-lg py-1 hidden"
             >
               <Link
-                href="/mypage"
+                href="/mypage/collections"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition"
               >
                 마이 페이지
