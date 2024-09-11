@@ -11,6 +11,9 @@ const Header = () => {
     price: state.price,
     setPrice: state.setPrice,
   }));
+  useEffect(() => {
+    setPrice();
+  }, []);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
