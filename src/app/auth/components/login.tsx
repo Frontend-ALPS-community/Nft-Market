@@ -1,51 +1,55 @@
 'use client';
 import { authApi } from '@/apis/authApi';
 import useAuthStore from '@/store/useAuth';
-import useUserIdStore from '@/store/useUserId';
+import useStatusStore from '@/store/useStatus';
 
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const router = useRouter();
   const { setAuthState } = useAuthStore();
-  const setUserId = useUserIdStore((state) => state.setUserId);
-  const userId = useUserIdStore((state) => state.userId);
+  const setUserId = useStatusStore((state) => state.setUserId);
+  const setUsername = useStatusStore((state) => state.setUsername);
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
+      // 로그인 요청
       const res = await authApi.login({ email, password });
-      const { loggedIn } = await authApi.status();
-      setAuthState(loggedIn); //로그인 상태 관리
+      if (res.status === 200) {
+        // console.log('로그인 성공:', res);
 
-      if (res.message === 'Login successful') {
-        // 로그인 성공 시
+        // 로그인 상태 확인
         const statusRes = await authApi.status();
-        if (statusRes.loggedIn) {
-          setUserId(statusRes.decoded.userId); // userId를 zustand 스토어에 저장
-          console.log('userId set in store:', statusRes.decoded.userId); // 상태 업데이트 후 확인
-          console.log(
-            'Current userId from store:', //얘는 뜸
-            useUserIdStore.getState().userId
-          ); // 스토어 상태를 즉시 확인
+        const { loggedIn, decoded } = statusRes;
+
+        if (loggedIn && decoded?.userId) {
+          setAuthState(true); // 로그인 상태 업데이트
+          setUserId(decoded.userId); // userId를 zustand 스토어에 저장
+          setUsername(decoded.username);
+          // console.log('userId set in store:', decoded);
+
+          // 바로 store에서 상태 확인
+          // const userIdFromStore = useStatusStore.getState().username;
+          // console.log('Current userId from store:', userIdFromStore);
+
           router.push('/'); // 메인 페이지로 이동
+        } else {
+          throw new Error('로그인 상태 확인 실패');
         }
+      } else {
+        throw new Error('로그인 실패');
       }
     } catch (err) {
-      console.log(err);
+      console.error('Error during login:', err);
       alert('로그인 실패: 이메일 또는 비밀번호를 확인하세요.');
     }
   };
-  useEffect(() => {
-    if (userId) {
-      console.log('Store updated with userId:', userId); // 상태가 업데이트된 후 userId 확인 요기도 잘뜸.
-    } else {
-      console.log('userId is not set in store');
-    }
-  }, [userId]); // userId가 변경될 때마다 useEffect 실행
+
   return (
     <div className="centered-flex">
       <div className="w-full max-w-md p-4 sm:p-6">

@@ -47,10 +47,19 @@ export const authApi = {
   },
   async offers(userId: string) {
     try {
-      const res = await Axios.post(PATH + '/offers', { userId }); // POST 요청으로 변경하고 userId를 포함
+      const res = await Axios.post(PATH + '/offers', { userId });
       return res.data;
     } catch (error) {
       console.error('Error fetching offers:', error);
+    }
+  },
+
+  async favorites(userId: string) {
+    try {
+      const res = await Axios.post(PATH + '/favorites', { userId });
+      return res.data;
+    } catch (error) {
+      console.error('Error fetching favorites:', error);
     }
   },
 };

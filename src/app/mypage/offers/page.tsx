@@ -1,6 +1,6 @@
 'use client';
 import { authApi } from '@/apis/authApi';
-import useUserIdStore from '@/store/useUserId';
+import useStatusStore from '@/store/useStatus';
 import React, { useEffect, useState } from 'react';
 import OffersList, { Offer } from './components/OfferList';
 
@@ -20,7 +20,7 @@ const Page: React.FC = () => {
   // const res = await authApi.offers();
   // const res = await authApi.status();
   // console.log(res);
-  const userId = useUserIdStore((state) => state.userId);
+  const userId = useStatusStore((state) => state.userId);
 
   const [offers, setOffers] = useState<Offer[]>([]); // API에서 받은 제안 데이터를 저장하는 상태
 
@@ -43,8 +43,10 @@ const Page: React.FC = () => {
   }, [userId]);
   return (
     <div className="p-8 bg-white shadow rounded-lg">
-      <h1 className="text-2xl font-bold mb-4">제안</h1>
-      <p>여기는 사용자가 제안한 아이템들을 보여주는 페이지입니다.</p>
+      <h1 className="text-2xl md:text-xl sm:text-lg font-bold mb-4">제안</h1>
+      <p className="md:text-base text-xs">
+        사용자가 제안한 아이템들을 보여주는 페이지입니다.
+      </p>
       <OffersList offers={offers} />
     </div>
   );

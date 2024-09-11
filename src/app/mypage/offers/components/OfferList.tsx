@@ -76,7 +76,7 @@ const OffersList: React.FC<OffersListProps> = ({ offers }) => {
         priceAsc={priceAsc}
         dateAsc={dateAsc}
       />
-      <div className="mt-6 space-y-4">
+      <div className="mt-6 space-y-4 md:text-base text-xs">
         {sortedOffers.map((offer) => (
           <Link key={offer.cardId} href={`/assets/${offer.cardId}`} passHref>
             <div className="block p-4 bg-gray-50 hover:bg-gray-200 rounded-lg shadow-sm transition duration-150 ease-in-out mb-4">
@@ -107,8 +107,8 @@ const OffersList: React.FC<OffersListProps> = ({ offers }) => {
                     <div className="col-span-1 text-center">Loading...</div>
                   </>
                 )}
-                <div className="col-span-1 text-center">{offer.price}</div>
-                <div className="col-span-1 text-center">
+                <div className="col-span-1 text-center">{offer.price}ETH</div>
+                <div className="col-span-1 text-center text-[9px] sm:text-base">
                   To: {offer.owner} {/* 수신자 정보 유지 */}
                 </div>
               </div>
