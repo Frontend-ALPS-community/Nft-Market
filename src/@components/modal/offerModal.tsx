@@ -81,6 +81,7 @@ const OfferModal: React.FC<IOfferModal> = ({
   };
 
   const onClickOfferBtn = async () => {
+    console.log(proposer);
     if (!offerPrice || !selectedOption)
       return window.alert('가격이나 날짜가 비어있습니다');
     if (isNaN(parseFloat(offerPrice)))
@@ -98,7 +99,9 @@ const OfferModal: React.FC<IOfferModal> = ({
           proposer,
           userId,
         };
+
         const res = await CardApi.createOffer(id, obj);
+        console.log(res);
         onCardUpdated();
       }
     }

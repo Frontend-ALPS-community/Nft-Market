@@ -45,4 +45,21 @@ export const authApi = {
     const res = await Axios.post(PATH + '/refreshAccessToken');
     return res;
   },
+  async offers(userId: string) {
+    try {
+      const res = await Axios.post(PATH + '/offers', { userId });
+      return res.data;
+    } catch (error) {
+      console.error('Error fetching offers:', error);
+    }
+  },
+
+  async favorites(userId: string) {
+    try {
+      const res = await Axios.post(PATH + '/favorites', { userId });
+      return res.data;
+    } catch (error) {
+      console.error('Error fetching favorites:', error);
+    }
+  },
 };
