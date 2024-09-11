@@ -1,13 +1,14 @@
 'use client';
-import Link from 'next/link';
 
 interface CardProps {
   id: string;
   title: string;
-  price: number;
+  price: number | null;
   lastPrice: number;
   imageUrl: string;
   background: string;
+  onClick: () => void; // onClick 속성 추가
+  viewMode: 'grid' | 'list';
 }
 
 const Card: React.FC<CardProps> = ({
@@ -17,19 +18,22 @@ const Card: React.FC<CardProps> = ({
   lastPrice,
   imageUrl,
   background,
+  onClick,
+  viewMode,
 }) => {
   const handleButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
+    onClick();
   };
-  return (
-    <>
-      <Link
-        href={`/assets/${id}`}
+  if (viewMode === 'grid') {
+    return (
+      <div
         className="bg-white rounded-lg shadow-md m-4 max-w-[250px] min-w-[200px] cursor-pointer flex-grow relative group overflow-hidden"
+        onClick={handleButtonClick}
       >
         <div
           style={{ backgroundColor: background }}
-          className={`aspect-square overflow-hidden rounded-lg outline-none`}
+          className="aspect-square overflow-hidden rounded-lg outline-none"
         >
           <img
             alt="이미지"
@@ -42,17 +46,15 @@ const Card: React.FC<CardProps> = ({
           <p className={`my-2 font-semibold ${price ? '' : 'invisible'}`}>
             {price} ETH
           </p>
-          <p>마지막 판매 : {lastPrice} ETH</p>
+          <p>마지막 판매: {lastPrice} ETH</p>
         </div>
-        <div
-          onClick={handleButtonClick}
-          className="absolute bottom-0 left-0 right-0 bg-theme-text-blue text-white text-center py-2 opacity-0 transform translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
-        >
+        <div className="absolute bottom-0 left-0 right-0 bg-theme-text-blue text-white text-center py-2 opacity-0 transform translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
           지금 구매하기
         </div>
-      </Link>
-    </>
-  );
+      </div>
+    );
+  }
+  return <></>;
 };
 
 export default Card;

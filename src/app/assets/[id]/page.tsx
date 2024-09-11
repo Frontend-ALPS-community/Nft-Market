@@ -27,7 +27,8 @@ export interface CardAttributes {
   // 추가 특성이 있다면 여기 추가
 }
 
-interface Offer {
+export interface Offer {
+  _id: string;
   price: number;
   usdPrice: number;
   expiryDate: Date;
@@ -49,6 +50,7 @@ interface Price {
 }
 
 export interface CardData {
+  _id: string;
   image: string; // 이미지 URL 또는 경로
   saleEndDate: Date | null;
   cardName: string; // 카드 이름
@@ -61,7 +63,8 @@ export interface CardData {
   transaction: Transaction[]; // 거래 정보
 }
 
-const initialState: CardData = {
+export const initialState: CardData = {
+  _id: '',
   image: '', // 기본값 빈 문자열
   saleEndDate: null,
   cardName: '', // 기본값 빈 문자열
@@ -165,7 +168,12 @@ const Page: React.FC<IParams> = ({ params: { id } }) => {
               username={username}
             />
             <DetailGraph card={card} />
-            <DetailOffer card={card} username={username} />
+            <DetailOffer
+              card={card}
+              username={username}
+              updateCard={updateCard}
+              cardId={id}
+            />
           </div>
         </div>
         <DetailTransaction card={card} id={id} />

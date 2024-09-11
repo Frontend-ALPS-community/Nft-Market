@@ -8,11 +8,11 @@ interface ITransactionItemProps {
 const TransactionItem: React.FC<ITransactionItemProps> = ({ item }) => {
   const date = dayjs(item.date);
   const day = {
-    month: dayjs().format('MMM'),
-    day: dayjs().format('D'),
-    year: dayjs().format('YYYY'),
-    time: dayjs().format('HH:mm'),
-    period: dayjs().format('A'),
+    month: date.format('MMM'),
+    day: date.format('D'),
+    year: date.format('YYYY'),
+    time: date.format('HH:mm'),
+    period: date.format('A'),
   };
 
   return (

@@ -1,6 +1,4 @@
-import Navbar from '@/@components/navbar/navbar';
-import UtilityBar from '@/@components/utilityBar/page';
-import CardCollection from './components/CardCollection';
+import CollectionPart from './components/CollectionPart';
 import HomeInfo from './components/HomeInfo';
 
 export default function Home() {
@@ -19,11 +17,7 @@ export default function Home() {
           </video>
         </div>
       </div>
-      <UtilityBar />
-      <div className="flex">
-        <Navbar />
-        <CardCollection />
-      </div>
+      <CollectionPart />
     </>
   );
 }

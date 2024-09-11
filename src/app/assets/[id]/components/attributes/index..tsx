@@ -6,15 +6,6 @@ interface IDetailProp {
   card: CardData;
 }
 
-const colorArr = {
-  '#CED4D9': 'gray',
-  '#95DBAD': 'green',
-  '#FCB5DB': 'pink',
-  '#F5CD71': 'yellow',
-  '#ABA3FF': 'purple',
-  '#99CEFF': 'blue',
-};
-
 const DetailProp: React.FC<IDetailProp> = ({ card }) => {
   return (
     <div className="my-4">

@@ -8,6 +8,7 @@ interface IOfferLayout {
   from: string;
   item?: boolean;
   isOwner?: boolean;
+  onSellClick?: () => void;
 }
 
 const OfferLayout: React.FC<IOfferLayout> = ({
@@ -18,6 +19,7 @@ const OfferLayout: React.FC<IOfferLayout> = ({
   from,
   item,
   isOwner,
+  onSellClick,
 }) => {
   const remain = calculateRemainingTime(expire);
   return (
@@ -47,7 +49,8 @@ const OfferLayout: React.FC<IOfferLayout> = ({
           {from}
         </div>
         <button
-          className={`bg-theme-text-blue ${isOwner ? 'visible' : 'invisible'} text-sm p-2 rounded-lg hover:opacity-80`}
+          className={`bg-theme-text-blue text-white ${isOwner ? 'visible' : 'invisible'} text-sm p-2 rounded-lg hover:opacity-80`}
+          onClick={onSellClick}
         >
           판매
         </button>
