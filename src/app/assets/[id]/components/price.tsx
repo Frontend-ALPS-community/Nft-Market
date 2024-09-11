@@ -1,6 +1,5 @@
 'use client';
 import DetailLayout from '@/@components/assets/DetailLayout';
-import useDecodedStore from '@/store/useDecode';
 import useOfferModal from '@/store/useOfferModal';
 import useBuyModal from '@/store/userBuyModal';
 import useSellModal from '@/store/useSellModal';
@@ -11,13 +10,18 @@ export interface IDetailPrice {
   id: string;
   card: CardData;
   usdPrice: number;
+  username: string;
 }
 
-const DetailPrice: React.FC<IDetailPrice> = ({ id, card, usdPrice }) => {
+const DetailPrice: React.FC<IDetailPrice> = ({
+  id,
+  card,
+  usdPrice,
+  username,
+}) => {
   const toggleOfferButton = useOfferModal().toggleButton;
   const toggleBuyButton = useBuyModal().toggleButton;
   const toggleSellButton = useSellModal().toggleButton;
-  const { username } = useDecodedStore().decoded;
   const cardOwner = card.owner;
   const isOwner = username === cardOwner ? true : false;
   const price = card.price.currentPrice;
