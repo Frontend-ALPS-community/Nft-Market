@@ -1,10 +1,11 @@
 interface IBoxLayout {
   property: string;
+  value: string;
 }
 
 const BoxLayout: React.FC<IBoxLayout> = ({ property }) => {
   return (
-    <div className="bg-theme-bg-gray flex flex-col gap-1 py-2 w-[180px]">
+    <div className={`bg-theme-bg-gray flex flex-col gap-1 py-2 w-[180px]`}>
       <div className="text-xs font-bold text-theme-text-gray text-center">
         {property}
       </div>

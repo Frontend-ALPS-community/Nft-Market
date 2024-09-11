@@ -13,11 +13,21 @@ export interface IFavoriteBody {
   userId: string;
 }
 
+export interface IAcceptOfferBody {
+  username: string;
+  offerId: string | undefined;
+}
+
 const PATH = '/cards';
 
 export const CardApi = {
-  async getAllCard() {
-    const res = await Axios.get(PATH + '/');
+  async getAllCard(sort?: string, colors?: string[]) {
+    const colorParam =
+      colors && colors.length > 0 ? `&colors=${colors.join(',')}` : '';
+    const url = sort
+      ? `${PATH}/?sort=${sort}${colorParam}`
+      : `${PATH}/?${colorParam}`; // sort가 있으면 쿼리스트링 추가
+    const res = await Axios.get(url);
     return res.data;
   },
   async getCard(id: string) {
@@ -44,6 +54,11 @@ export const CardApi = {
 
   async sellStart(id: string, price: number) {
     const res = await Axios.post(`${PATH}/${id}/sellSetting`, { price });
+    return res.data;
+  },
+
+  async acceptOffer(id: string, obj: IAcceptOfferBody) {
+    const res = await Axios.post(`${PATH}/${id}/acceptOffer`, obj);
     return res.data;
   },
 };
