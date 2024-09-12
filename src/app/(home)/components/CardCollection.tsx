@@ -1,5 +1,6 @@
 'use client';
 import Card from '@/@components/cards/card';
+import CardList from '@/@components/cards/cardList';
 import { CardData } from '@/app/assets/[id]/page';
 
 export interface CardItem {
@@ -27,13 +28,18 @@ const CardCollection: React.FC<ICardCollectionProps> = ({
   return (
     <>
       {viewMode === 'list' && (
-        <ul className="flex font-semibold border-b-2 h-fit w-full bg-red-200 mt-4 p-2">
-          <li className="flex-[2]">아이템</li>
-          <li className="flex-[1]">현재 가격</li>
-          <li className="flex-[1]">마지막 판매</li>
-          <li className="flex-[1]">소유자</li>
-          <li className="flex-[1]">판매 기간</li>
-        </ul>
+        <div className="h-fit w-full">
+          <ul className="flex font-semibold border-b-2 bg-red-200 mt-4 p-2">
+            <li className="flex-[1.7]">아이템</li>
+            <li className="flex-[1]">현재 가격</li>
+            <li className="flex-[1]">마지막 판매</li>
+            <li className="flex-[1]">소유자</li>
+            <li className="flex-[1.2]">판매 기간</li>
+          </ul>
+          {card.map((item) => (
+            <CardList card={item} />
+          ))}
+        </div>
       )}
       <div className="flex flex-wrap">
         {card.map((item) => (
