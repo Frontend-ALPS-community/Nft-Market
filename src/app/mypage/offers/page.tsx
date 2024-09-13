@@ -29,8 +29,8 @@ const Page: React.FC = () => {
       if (userId) {
         try {
           const res = await authApi.offers(userId);
-          // console.log('Fetched offers:', res); // 응답 데이터 확인
-          setOffers(res.offers); // 상태에 API에서 받은 데이터를 저장
+          console.log('Fetched offers:', res); // 응답 데이터 확인
+          setOffers(res); // 상태에 API에서 받은 데이터를 저장
         } catch (error) {
           console.error('Error fetching offers:', error);
         }
@@ -47,7 +47,7 @@ const Page: React.FC = () => {
       <p className="md:text-base text-xs">
         사용자가 제안한 아이템들을 보여주는 페이지입니다.
       </p>
-      <OffersList offers={offers} />
+      {offers && <OffersList offers={offers} />}
     </div>
   );
 };

@@ -6,6 +6,7 @@ interface CardListProps {
 }
 const CardCollection: React.FC<CardListProps> = ({ res }) => {
   //const res = CardApi.getAllCard();
+  console.log(res);
 
   return (
     <div className="grid gap-4  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-2">
