@@ -1,10 +1,11 @@
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import React, { ReactNode } from 'react';
-import Btn from './@components/Btn';
 
 interface LayoutProps {
   children: ReactNode;
 }
+const Btn = dynamic(() => import('./@components/Btn'), { ssr: false });
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
@@ -28,7 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <Btn />
       </div>
 
-      <div className="p-4 md:p-8">{children}</div>
+      <div className="p-4 ">{children}</div>
     </div>
   );
 };

@@ -29,7 +29,7 @@ const Page: React.FC = () => {
   }, [userId]);
 
   return (
-    <div className="p-8 bg-white ">
+    <div className="p-8 bg-white shadow ">
       <h1 className="text-2xl md:text-xl sm:text-lg font-bold mb-4">
         즐겨찾기
       </h1>
