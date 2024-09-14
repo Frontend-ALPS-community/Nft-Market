@@ -1,22 +1,23 @@
-// src/app/mypage/favorites/page.tsx
-
 'use client';
+
 import { authApi } from '@/apis/authApi';
+import useDecodedStore from '@/store/useDecode';
 import React from 'react';
-import MyPage from '../@components/mypage';
+import CollectionPart from '../@components/CollectionPart';
 
 const FavoritesPage: React.FC = () => {
-  const fetchFavorites = async (userId: string) => {
-    return await authApi.favorites(userId);
+  const { decoded } = useDecodedStore();
+  const userId = decoded.userId;
+
+  const fetchFavorites = async () => {
+    if (userId) {
+      return await authApi.favorites(userId);
+    } else {
+      return [];
+    }
   };
 
-  return (
-    <MyPage
-      title="즐겨찾기"
-      description="사용자가 즐겨찾기한 아이템들을 보여주는 페이지입니다."
-      fetchData={fetchFavorites}
-    />
-  );
+  return <CollectionPart fetchData={fetchFavorites} />;
 };
 
 export default FavoritesPage;
