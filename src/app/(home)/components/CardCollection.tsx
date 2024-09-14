@@ -29,7 +29,7 @@ const CardCollection: React.FC<ICardCollectionProps> = ({
     <>
       {viewMode === 'list' && (
         <div className="h-fit w-full">
-          <ul className="flex font-semibold border-b-2 bg-red-200 mt-4 p-2">
+          <ul className="flex font-semibold border-b-2 mt-4 p-2">
             <li className="flex-[1.7]">아이템</li>
             <li className="flex-[1]">현재 가격</li>
             <li className="flex-[1]">마지막 판매</li>

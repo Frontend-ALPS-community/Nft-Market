@@ -40,7 +40,7 @@ const CollectionPart = () => {
     setViewMode(mode);
   };
   return (
-    <>
+    <div>
       <UtilityBar
         cardLength={card.length}
         handleViewModeChange={handleViewModeChange}
@@ -54,7 +54,7 @@ const CollectionPart = () => {
           viewMode={viewMode}
         />
       </div>
-    </>
+    </div>
   );
 };
 
