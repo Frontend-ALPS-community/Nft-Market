@@ -1,4 +1,5 @@
 'use client';
+import dayjs from 'dayjs'; // day.js 라이브러리 import
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -52,8 +53,8 @@ const OffersList: React.FC<OffersListProps> = ({ offers }) => {
     if (priceAsc !== null) {
       return priceAsc ? a.price - b.price : b.price - a.price;
     } else {
-      const dateA = new Date(a.date).getTime();
-      const dateB = new Date(b.date).getTime();
+      const dateA = dayjs(a.date).valueOf();
+      const dateB = dayjs(b.date).valueOf();
       return dateAsc ? dateA - dateB : dateB - dateA;
     }
   });
