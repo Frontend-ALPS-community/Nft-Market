@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        NaNumSquare: ['NaNumSquare', 'sans-serif'],
+      },
       fontSize: {
         xs: '12px',
       },
