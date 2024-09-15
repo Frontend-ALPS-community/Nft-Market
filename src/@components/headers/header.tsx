@@ -6,6 +6,7 @@ import usePriceInfo from '@/store/usePriceInfo';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
+import { IoPersonCircle } from 'react-icons/io5';
 
 const Header = () => {
   const { price, setPrice } = usePriceInfo((state) => ({
@@ -85,7 +86,7 @@ const Header = () => {
   };
 
   return (
-    <div className="min-w-[380px] w-full h-[80px] bg-white flex justify-between items-center px-4 sm:px-6 shadow-md">
+    <div className="sticky top-0 left-0 z-50   w-full h-[80px] bg-white flex justify-between items-center px-4 sm:px-6 shadow-md">
       <Link href="/" className="flex items-center">
         <img
           width={60}
@@ -104,7 +105,7 @@ const Header = () => {
               onClick={toggleDropdown}
               className="h-8 sm:h-14 w-8 sm:w-14 rounded-full bg-white flex items-center justify-center"
             >
-              <img src="/assets/logo/my.png" alt="My" />
+              <IoPersonCircle size={50} />
             </button>
             <div
               ref={dropdownRef}
