@@ -85,7 +85,7 @@ const Header = () => {
   };
 
   return (
-    <div className="min-w-[380px] w-full h-[80px] bg-white flex justify-between items-center px-4 sm:px-6 shadow-md">
+    <div className="sticky top-0 z-30 w-full h-[80px] bg-white flex justify-between items-center px-4 sm:px-6">
       <Link href="/" className="flex items-center">
         <img
           width={60}
@@ -108,7 +108,7 @@ const Header = () => {
             </button>
             <div
               ref={dropdownRef}
-              className="absolute right-0 mt-2 w-40 sm:w-48 bg-white rounded-md shadow-lg py-1 hidden"
+              className="absolute right-0 mt-2 w-40 sm:w-48  bg-white rounded-md shadow-lg py-1 hidden"
             >
               <Link
                 href="/mypage/collections"

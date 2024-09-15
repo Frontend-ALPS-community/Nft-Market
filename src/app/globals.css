@@ -26,5 +26,5 @@ body {
 }
 
 body {
-  @apply max-w-[1440px] m-auto;
+  @apply max-w-[1440px] mx-auto min-w-[375px];
 }

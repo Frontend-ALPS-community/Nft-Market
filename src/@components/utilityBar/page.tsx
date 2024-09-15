@@ -21,8 +21,8 @@ const UtilityBar: React.FC<IUtilityBarProps> = ({
   };
 
   return (
-    <div className="sticky top-0 z-20 bg-white">
-      <div className="mt-6 h-[70px] between-flex p-2 rounded-lg mx-auto">
+    <div className="sticky top-[80px] z-20">
+      <div className="mt-6 h-[70px] between-flex p-2 mx-auto bg-white">
         <div className="flex gap-4 items-center">
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition">
             <FiFilter
