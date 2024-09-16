@@ -62,4 +62,12 @@ export const authApi = {
       console.error('Error fetching favorites:', error);
     }
   },
+  async collections(userId: string) {
+    try {
+      const res = await Axios.post(PATH + '/getCollectedCards', { userId });
+      return res.data;
+    } catch (error) {
+      console.error('Error fetching favorites:', error);
+    }
+  },
 };
