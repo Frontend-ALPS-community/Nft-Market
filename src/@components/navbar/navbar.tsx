@@ -11,7 +11,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onColorChange }) => {
   const { isButtonClicked } = useUtilBar();
   return (
-    <div className="sticky top-[70px] z-10 h-fit">
+    <div className="sticky top-[150px] z-10 h-fit">
       <div className={`flex-col m-4 ${isButtonClicked ? 'hidden' : ''}`}>
         <Property type="background" onColorChange={onColorChange}>
           Background

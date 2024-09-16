@@ -41,7 +41,7 @@ const CardCollection: React.FC<ICardCollectionProps> = ({
           ))}
         </div>
       )}
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap bg-red-300">
         {card.map((item) => (
           <Card
             id={item._id}

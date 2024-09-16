@@ -12,7 +12,7 @@ const CardList: React.FC<ICardListProps> = ({ card }) => {
     : '--';
   return (
     <Link href={`/assets/${card._id}`}>
-      <ul className="flex items-center border-b-2 p-2 text-sm cursor-pointer hover:bg-theme-bg-gray">
+      <ul className="flex items-center border-b-2 p-2 text-sm cursor-pointer hover:bg-theme-bg-gray group">
         <li className="flex-[1.7] flex items-center gap-6">
           <img
             width={40}
@@ -23,7 +23,7 @@ const CardList: React.FC<ICardListProps> = ({ card }) => {
           <div className="font-semibold">{card.cardName}</div>
         </li>
         <li className="flex-[1]">
-          <span className="bg-theme-bg-gray px-2 py-1 rounded-md font-semibold">
+          <span className="bg-theme-bg-gray px-2 py-1 rounded-md font-semibold group-hover:bg-[#e3e3e3]">
             {card.price.currentPrice
               ? `${card.price.currentPrice} ETH ✨`
               : '--'}
