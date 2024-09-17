@@ -3,7 +3,6 @@ import useStatusStore from '@/store/useStatus';
 import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
 
-
 const Btn = () => {
   const username = useStatusStore((state) => state.username);
   //console.log(username);
