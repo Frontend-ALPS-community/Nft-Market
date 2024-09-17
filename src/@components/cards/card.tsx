@@ -35,12 +35,13 @@ const Card: React.FC<CardProps> = ({
       >
         <div
           style={{ backgroundColor: background }}
-          className="aspect-square overflow-hidden rounded-lg outline-none"
+          className="relative aspect-square overflow-hidden rounded-lg outline-none"
         >
           <Image
             alt="Card Img"
             src={process.env.NEXT_PUBLIC_Backend_URL + imageUrl}
             className="w-full h-full transition-transform transform group-hover:scale-110 duration-300"
+            layout="fill"
           />
         </div>
         <div className="m-4">

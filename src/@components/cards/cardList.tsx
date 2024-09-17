@@ -17,6 +17,7 @@ const CardList: React.FC<ICardListProps> = ({ card }) => {
         <li className="flex-[1.7] flex items-center gap-6">
           <Image
             width={40}
+            height={40}
             style={{ backgroundColor: card.attributes.background }}
             src={process.env.NEXT_PUBLIC_Backend_URL + card.image}
             className="rounded-xl"

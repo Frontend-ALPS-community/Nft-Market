@@ -144,6 +144,7 @@ const OfferModal: React.FC<IOfferModal> = ({
             src={process.env.NEXT_PUBLIC_Backend_URL + card.image}
             className="w-[70px] h-[70px] m-4 rounded-xl"
             alt="Card Img"
+            layout="fill"
           />
           <div>
             <div className="font-bold">{card.cardName}</div>

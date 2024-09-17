@@ -90,6 +90,7 @@ const Header = () => {
       <Link href="/" className="flex items-center">
         <img
           width={60}
+          height={60}
           src="/assets/logo/logoball.png"
           alt="Logo"
           className="mr-2 sm:mr-3"
@@ -105,7 +106,7 @@ const Header = () => {
               onClick={toggleDropdown}
               className="h-8 sm:h-14 w-8 sm:w-14 rounded-full bg-white flex items-center justify-center"
             >
-              <Image src="/assets/logo/my.png" alt="Logo" />
+              <Image src="/assets/logo/my.png" alt="Logo" layout="fill" />
             </button>
             <div
               ref={dropdownRef}

@@ -47,6 +47,7 @@ const DetailImg: React.FC<IDetailImg> = ({ id, card, onCardUpdated }) => {
         <Image
           alt="Card Img"
           src={process.env.NEXT_PUBLIC_Backend_URL + card?.image}
+          layout="fill"
         />
       </div>
     </div>
