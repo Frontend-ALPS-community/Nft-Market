@@ -1,5 +1,6 @@
 import { CardData } from '@/app/assets/[id]/page';
 import dayjs from 'dayjs';
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface ICardListProps {
@@ -14,11 +15,13 @@ const CardList: React.FC<ICardListProps> = ({ card }) => {
     <Link href={`/assets/${card._id}`}>
       <ul className="flex items-center border-b-2 p-2 text-sm cursor-pointer hover:bg-theme-bg-gray group">
         <li className="flex-[1.7] flex items-center gap-6">
-          <img
+          <Image
             width={40}
+            height={40}
             style={{ backgroundColor: card.attributes.background }}
             src={process.env.NEXT_PUBLIC_Backend_URL + card.image}
             className="rounded-xl"
+            alt="Card Img"
           />
           <div className="font-semibold">{card.cardName}</div>
         </li>

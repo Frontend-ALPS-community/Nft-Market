@@ -1,5 +1,5 @@
 import { CardApi } from '@/apis/cardApi';
-import {create} from 'zustand';
+import { create } from 'zustand';
 
 type Price = { total: number; min: number };
 

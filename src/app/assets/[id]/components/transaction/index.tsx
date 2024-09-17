@@ -20,7 +20,7 @@ const DetailTransaction: React.FC<ITransProps> = ({ card, id }) => {
             <div className={`flex-1`}>날짜</div>
           </div>
           {card.transaction.map((item) => (
-            <TransactionItem item={item} />
+            <TransactionItem key={item.from} item={item} />
           ))}
         </div>
       </DetailLayout>

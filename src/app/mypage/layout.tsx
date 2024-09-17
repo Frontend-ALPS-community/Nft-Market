@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 interface LayoutProps {
-  children: ReactNode;
+  children: React.ReactNode;
+  components: React.ReactNode;
 }
 
 const Btn = dynamic(() => import('./@components/Btn'), { ssr: false });

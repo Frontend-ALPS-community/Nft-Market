@@ -37,13 +37,14 @@ const CardCollection: React.FC<ICardCollectionProps> = ({
             <li className="flex-[1.2]">판매 기간</li>
           </ul>
           {card.map((item) => (
-            <CardList card={item} />
+            <CardList key={item._id} card={item} />
           ))}
         </div>
       )}
-      <div className="flex flex-wrap bg-red-300">
+      <div className="flex flex-wrap">
         {card.map((item) => (
           <Card
+            key={item._id}
             id={item._id}
             title={item.cardName}
             price={item.price.currentPrice}

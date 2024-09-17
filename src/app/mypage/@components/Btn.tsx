@@ -2,9 +2,9 @@
 import useStatusStore from '@/store/useStatus';
 import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
-import { FC } from 'react'; // FC 타입을 import합니다.
 
-const Btn: FC = () => {
+
+const Btn = () => {
   const username = useStatusStore((state) => state.username);
   //console.log(username);
   const segments = useSelectedLayoutSegments();
