@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FiX } from 'react-icons/fi';
 import { CardData, Offer } from '../../page';
 
@@ -25,10 +26,11 @@ const OfferSellModal: React.FC<IOfferSellModalProps> = ({
         </div>
         <div className="centered-flex flex-col border border-theme-border-gray rounded-xl p-12">
           <div>
-            <img
+            <Image
               style={{ backgroundColor: card.attributes.background }}
               src={process.env.NEXT_PUBLIC_Backend_URL + card.image}
               className="w-[140px] h-[140px] m-4 rounded-xl"
+              alt="Card Img"
             />
             <div className="font-bold text-xl text-center">{card.cardName}</div>
           </div>

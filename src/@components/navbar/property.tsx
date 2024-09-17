@@ -36,6 +36,7 @@ const Property: React.FC<PropertyProps> = ({
           <>
             {colorArr.map((item) => (
               <div
+                key={item}
                 className={`${toggle ? `` : `hidden`} text-[#121212] rounded-xl p-4 cursor-pointer hover:bg-theme-bg-gray`}
                 onClick={() => handleCheck(item)} // 체크박스를 클릭할 때 상태 업데이트
               >

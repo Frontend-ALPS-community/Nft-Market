@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 interface CardProps {
   id: string;
   title: string;
@@ -35,8 +37,8 @@ const Card: React.FC<CardProps> = ({
           style={{ backgroundColor: background }}
           className="aspect-square overflow-hidden rounded-lg outline-none"
         >
-          <img
-            alt="이미지"
+          <Image
+            alt="Card Img"
             src={process.env.NEXT_PUBLIC_Backend_URL + imageUrl}
             className="w-full h-full transition-transform transform group-hover:scale-110 duration-300"
           />

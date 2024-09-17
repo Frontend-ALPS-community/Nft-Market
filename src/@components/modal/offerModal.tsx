@@ -4,6 +4,7 @@ import useDecodedStore from '@/store/useDecode';
 import useOfferModal from '@/store/useOfferModal';
 import usePriceInfo from '@/store/usePriceInfo';
 import dayjs from 'dayjs';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import Select, { StylesConfig } from 'react-select';
@@ -138,10 +139,11 @@ const OfferModal: React.FC<IOfferModal> = ({
       </div>
       <div className="my-8 mx-8">
         <div className="flex-center">
-          <img
+          <Image
             style={{ backgroundColor: card.attributes.background }}
             src={process.env.NEXT_PUBLIC_Backend_URL + card.image}
             className="w-[70px] h-[70px] m-4 rounded-xl"
+            alt="Card Img"
           />
           <div>
             <div className="font-bold">{card.cardName}</div>

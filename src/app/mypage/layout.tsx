@@ -1,14 +1,15 @@
 'use client';
 import useStatusStore from '@/store/useStatus';
 import Image from 'next/image';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import Btn from './@components/Btn';
 
 interface LayoutProps {
-  children: ReactNode;
+  children: React.ReactNode;
+  components: React.ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = async ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   const username = useStatusStore((state) => state.username);
   //console.log(username);
   return (

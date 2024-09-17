@@ -1,5 +1,6 @@
 'use client';
 import usePriceInfo from '@/store/usePriceInfo';
+import Image from 'next/image';
 import { useState } from 'react';
 import { FiInstagram, FiMoreHorizontal, FiTwitter } from 'react-icons/fi';
 import { HiOutlineCheckBadge } from 'react-icons/hi2';
@@ -10,13 +11,14 @@ const HomeInfo = () => {
   const { price } = usePriceInfo();
   return (
     <>
-      <div className="text-theme-text-white absolute bottom-0 ml-14 z-10 mb-4">
+      <div className="text-theme-text-white absolute bottom-0 max-lg:bottom-20 ml-14 z-10 mb-4">
         <div className="flex flex-col gap-4">
-          <img
+          <Image
             width={100}
             height={100}
             src="/assets/logo/logoball.png"
             className="bg-black rounded-xl"
+            alt="Logo Img"
           />
           <div className="text-xl font-bold flex flex-col gap-1">
             <div className="flex gap-2 items-center ">
@@ -42,7 +44,7 @@ const HomeInfo = () => {
           <div>
             <div className={`${isExpanded ? 'flex flex-col' : 'flex'} gap-2`}>
               <div
-                className={`w-[480px] flex flex-col gap-4 ${isExpanded ? 'h-28 overflow-y-scroll' : 'text-ellipsis overflow-hidden whitespace-nowrap'}`}
+                className={`w-[480px] max-md:w-[300px] max-lg:w-[400px] max-sm:w-[200px] flex flex-col gap-4 ${isExpanded ? 'h-28 overflow-y-scroll' : 'text-ellipsis overflow-hidden whitespace-nowrap'}`}
               >
                 <div>
                   Monsterz is a home for creatives, dreamers, and collectors
@@ -65,18 +67,18 @@ const HomeInfo = () => {
                 {isExpanded ? '간단히보기' : '자세히 보기'}
               </div>
             </div>
-            <ul className="flex opacity-90">
+            <ul className="flex opacity-90 max-md:flex-col">
               <li>
                 <span className="font-semibold">Sep 2024</span>에 생성됨
-                <span className="mx-2">·</span>
+                <span className="mx-2 max-md:hidden">·</span>
               </li>
               <li>
                 제작자 수익 <span className="font-semibold">1%</span>
-                <span className="mx-2">·</span>
+                <span className="mx-2 max-md:hidden">·</span>
               </li>
               <li>
                 체인 <span className="font-semibold">Ethereum</span>
-                <span className="mx-2">·</span>
+                <span className="mx-2 max-md:hidden">·</span>
               </li>
             </ul>
           </div>

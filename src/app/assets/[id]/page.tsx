@@ -63,28 +63,27 @@ export interface CardData {
   transaction: Transaction[]; // 거래 정보
 }
 
-export const initialState: CardData = {
-  _id: '',
-  image: '', // 기본값 빈 문자열
-  saleEndDate: null,
-  cardName: '', // 기본값 빈 문자열
-  owner: '', // 기본값 빈 문자열
-  price: {
-    currentPrice: null, // 기본값 null
-    lastPrice: 0, // 기본값 0
-    priceHistory: [], // 기본값 빈 배열
-  },
-  views: 0, // 기본값 0
-  favorites: [], // 기본값 빈 배열
-  attributes: {
-    background: '', // 기본값 빈 문자열
-    type: '', // 기본값 빈 문자열
-  },
-  offers: [], // 기본값 빈 배열
-  transaction: [], // 기본값 빈 배열
-};
-
 const Page: React.FC<IParams> = ({ params: { id } }) => {
+  const initialState: CardData = {
+    _id: '',
+    image: '', // 기본값 빈 문자열
+    saleEndDate: null,
+    cardName: '', // 기본값 빈 문자열
+    owner: '', // 기본값 빈 문자열
+    price: {
+      currentPrice: null, // 기본값 null
+      lastPrice: 0, // 기본값 0
+      priceHistory: [], // 기본값 빈 배열
+    },
+    views: 0, // 기본값 0
+    favorites: [], // 기본값 빈 배열
+    attributes: {
+      background: '', // 기본값 빈 문자열
+      type: '', // 기본값 빈 문자열
+    },
+    offers: [], // 기본값 빈 배열
+    transaction: [], // 기본값 빈 배열
+  };
   const [card, setCard] = useState<CardData>(initialState);
   const isOfferClicked = useOfferModal().isButtonClicked;
   const isBuyClicked = useBuyModal().isButtonClicked;

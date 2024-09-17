@@ -3,6 +3,7 @@ import { authApi } from '@/apis/authApi';
 import useAuthStore from '@/store/useAuth';
 import useDecodedStore from '@/store/useDecode';
 import usePriceInfo from '@/store/usePriceInfo';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
@@ -104,7 +105,7 @@ const Header = () => {
               onClick={toggleDropdown}
               className="h-8 sm:h-14 w-8 sm:w-14 rounded-full bg-white flex items-center justify-center"
             >
-              <img src="/assets/logo/my.png" alt="My" />
+              <Image src="/assets/logo/my.png" alt="Logo" />
             </button>
             <div
               ref={dropdownRef}

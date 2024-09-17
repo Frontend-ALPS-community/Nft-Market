@@ -1,6 +1,7 @@
 'use client';
 import { CardApi } from '@/apis/cardApi';
 import useDecodedStore from '@/store/useDecode';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FiHeart } from 'react-icons/fi';
 import { CardAttributes } from '../page';
@@ -43,8 +44,8 @@ const DetailImg: React.FC<IDetailImg> = ({ id, card, onCardUpdated }) => {
             className="cursor-pointer"
           />
         </div>
-        <img
-          alt="이미지"
+        <Image
+          alt="Card Img"
           src={process.env.NEXT_PUBLIC_Backend_URL + card?.image}
         />
       </div>

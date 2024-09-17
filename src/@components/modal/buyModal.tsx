@@ -3,6 +3,7 @@ import { CardApi } from '@/apis/cardApi';
 import { CardData } from '@/app/assets/[id]/page';
 import useDecodedStore from '@/store/useDecode';
 import useBuyModal from '@/store/userBuyModal';
+import Image from 'next/image';
 import { FiX } from 'react-icons/fi';
 
 interface IBuyModal {
@@ -39,10 +40,11 @@ const BuyModal: React.FC<IBuyModal> = ({
       </div>
       <div className="centered-flex flex-col border border-theme-border-gray rounded-xl p-12">
         <div>
-          <img
+          <Image
             style={{ backgroundColor: card.attributes.background }}
             src={process.env.NEXT_PUBLIC_Backend_URL + card.image}
             className="w-[140px] h-[140px] m-4 rounded-xl"
+            alt="Card Img"
           />
           <div className="font-bold text-xl text-center">{card.cardName}</div>
           <div className="text-sm text-center">Buying for US ${usdPrice}</div>

@@ -1,9 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
-import { FC } from 'react'; // FC 타입을 import합니다.
 
-const Btn: FC = () => {
+const Btn = () => {
   const segments = useSelectedLayoutSegments();
 
   // 주어진 경로와 세그먼트를 비교하여 클래스를 반환하는 함수
