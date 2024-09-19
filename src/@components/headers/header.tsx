@@ -3,18 +3,19 @@ import { authApi } from '@/apis/authApi';
 import useAuthStore from '@/store/useAuth';
 import useDecodedStore from '@/store/useDecode';
 import usePriceInfo from '@/store/usePriceInfo';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
+import { BiSolidWallet } from 'react-icons/bi';
 import { IoPersonCircle } from 'react-icons/io5';
-
 const Header = () => {
   const { price, setPrice } = usePriceInfo((state) => ({
     price: state.price,
     setPrice: state.setPrice,
   }));
   const setDecoded = useDecodedStore().setDecoded;
+  const { wallet } = useDecodedStore().decoded;
+
   const fetchUserStatus = async () => {
     try {
       const res = await authApi.status();
@@ -87,39 +88,39 @@ const Header = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="sticky top-0 left-0 z-50   w-full h-[80px] bg-white flex justify-between items-center px-4 sm:px-6 shadow-md">
-=======
     <div className="sticky top-0 z-30 w-full h-[80px] bg-white flex justify-between items-center px-4 sm:px-6">
->>>>>>> 65536e0c126190861ed610480b16ab8cc9e69382
       <Link href="/" className="flex items-center">
         <img
           width={60}
           height={60}
-          src="/assets/logo/logoball.png"
+          src="/assets/logo/header.png"
           alt="Logo"
           className="mr-2 sm:mr-3"
         />
         <div className="text-gray-800 font-semibold text-base sm:text-lg">
-          Service Name
+          Nft Market
         </div>
       </Link>
       <div className="relative flex items-center">
         {authState ? (
-          <div className="relative z-50">
+          <div className="relative z-50 flex">
+            <div className="h-8 sm:h-14  sm:w-40  bg-white flex items-center  ">
+              <div className="w-8 sm:w-16">
+                <BiSolidWallet size={'full'} />
+              </div>
+              <div className=" font-semibold text-xs  sm:text-base">
+                &nbsp; {wallet} ETH
+              </div>
+            </div>
             <button
               onClick={toggleDropdown}
-              className="h-8 sm:h-14 w-8 sm:w-14 rounded-full bg-white flex items-center justify-center"
+              className="h-8 sm:h-14 w-8 sm:w-14  bg-white flex items-center justify-center "
             >
-<<<<<<< HEAD
               <IoPersonCircle size={50} />
-=======
-              <Image src="/assets/logo/my.png" alt="Logo" layout="fill" />
->>>>>>> 65536e0c126190861ed610480b16ab8cc9e69382
             </button>
             <div
               ref={dropdownRef}
-              className="absolute right-0 mt-2 w-40 sm:w-48  bg-white rounded-md shadow-lg py-1 hidden"
+              className="absolute right-0 mt-16 w-40 sm:w-48  bg-white rounded-md shadow-lg py-1 hidden"
             >
               <Link
                 href="/mypage/collections"
@@ -132,7 +133,7 @@ const Header = () => {
                   onClickLogOutBtn();
                   dropdownRef.current?.classList.add('hidden');
                 }}
-                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition"
+                className="block w-full text-left px-4 py-2  text-sm text-gray-700 hover:bg-gray-100 transition"
               >
                 로그아웃
               </button>
