@@ -3,6 +3,7 @@ import { authApi } from '@/apis/authApi';
 import useAuthStore from '@/store/useAuth';
 import useDecodedStore from '@/store/useDecode';
 import usePriceInfo from '@/store/usePriceInfo';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
@@ -86,10 +87,15 @@ const Header = () => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="sticky top-0 left-0 z-50   w-full h-[80px] bg-white flex justify-between items-center px-4 sm:px-6 shadow-md">
+=======
+    <div className="sticky top-0 z-30 w-full h-[80px] bg-white flex justify-between items-center px-4 sm:px-6">
+>>>>>>> 65536e0c126190861ed610480b16ab8cc9e69382
       <Link href="/" className="flex items-center">
         <img
           width={60}
+          height={60}
           src="/assets/logo/logoball.png"
           alt="Logo"
           className="mr-2 sm:mr-3"
@@ -105,11 +111,15 @@ const Header = () => {
               onClick={toggleDropdown}
               className="h-8 sm:h-14 w-8 sm:w-14 rounded-full bg-white flex items-center justify-center"
             >
+<<<<<<< HEAD
               <IoPersonCircle size={50} />
+=======
+              <Image src="/assets/logo/my.png" alt="Logo" layout="fill" />
+>>>>>>> 65536e0c126190861ed610480b16ab8cc9e69382
             </button>
             <div
               ref={dropdownRef}
-              className="absolute right-0 mt-2 w-40 sm:w-48 bg-white rounded-md shadow-lg py-1 hidden"
+              className="absolute right-0 mt-2 w-40 sm:w-48  bg-white rounded-md shadow-lg py-1 hidden"
             >
               <Link
                 href="/mypage/collections"

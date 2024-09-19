@@ -84,6 +84,7 @@ const DetailOffer: React.FC<IDetailOffer> = ({
           {card?.offers.map((item) => (
             <div className="py-4 border-t">
               <OfferLayout
+                key={item._id}
                 price={`${item.price} ETH`}
                 usdPrice={`$${item.usdPrice}`}
                 differ={item.priceDifference}

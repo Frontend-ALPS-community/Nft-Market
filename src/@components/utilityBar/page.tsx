@@ -21,9 +21,15 @@ const UtilityBar: React.FC<IUtilityBarProps> = ({
   };
 
   return (
+<<<<<<< HEAD
     <div className="sticky top-[80px] z-20 bg-white">
       <div className="mt-6 h-[70px] between-flex p-2 rounded-lg mx-auto">
         <div className="flex items-center">
+=======
+    <div className="sticky top-[80px] z-20">
+      <div className="mt-6 h-[70px] between-flex p-2 mx-auto bg-white">
+        <div className="flex gap-4 items-center">
+>>>>>>> 65536e0c126190861ed610480b16ab8cc9e69382
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition">
             <FiFilter
               className="text-gray-700"
@@ -31,7 +37,7 @@ const UtilityBar: React.FC<IUtilityBarProps> = ({
               onClick={toggleButton}
             />
           </div>
-          <div className="ml-4 text-gray-600 text-sm hidden md:block">
+          <div className="text-gray-600 hidden md:block font-semibold">
             결과 {cardLength}개
           </div>
         </div>
