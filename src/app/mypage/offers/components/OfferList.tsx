@@ -74,27 +74,28 @@ const OffersList: React.FC<OffersListProps> = ({ offers }) => {
         dateAsc={dateAsc}
       />
 
-      {/* 헤더 부분 수정 */}
+      {/* 헤더 부분 */}
       <div className="hidden sm:flex items-center font-semibold border-b p-2 mt-4">
         <div className="flex items-center flex-[1.7]">아이템</div>
-        <div className="flex-[1] text-center">제안 가격</div>
-        <div className="flex-[1] text-center">제안 일자</div>
-        <div className="flex-[1] text-center">제안자</div>
+        <div className="flex-[1] text-left">제안 가격</div>
+        <div className="flex-[1] text-left">마지막 판매</div>
+        <div className="flex-[1] text-left">소유자</div>
+        <div className="flex-[1] text-left">제안 일자</div>
       </div>
 
       {/* 리스트 아이템 부분 */}
-      <div className="mt-2">
+      <div>
         {sortedOffers.map((offer) => {
           const cardData = offer.cardId;
           const cardId = cardData._id;
           return (
             <Link key={offer._id} href={`/assets/${cardId}`} passHref>
-              <div className="border-b p-2 cursor-pointer hover:bg-gray-100">
+              <div className="border-b p-2 cursor-pointer hover:bg-theme-bg-gray group">
                 {/* 모바일 뷰 */}
                 <div className="sm:hidden">
                   <div className="flex items-center">
                     <div
-                      className="w-[60px] h-[60px] flex items-center justify-center rounded-md mr-4"
+                      className="w-[60px] h-[60px] flex items-center justify-center rounded-xl mr-4"
                       style={{
                         backgroundColor: cardData.attributes.background,
                       }}
@@ -104,11 +105,9 @@ const OffersList: React.FC<OffersListProps> = ({ offers }) => {
                         height={50}
                         alt={cardData.cardName}
                         src={
-                          process.env.NEXT_PUBLIC_Backend_URL
-                            ? process.env.NEXT_PUBLIC_Backend_URL +
-                              cardData.image
-                            : '/fallback-image.jpg'
+                          process.env.NEXT_PUBLIC_Backend_URL + cardData.image
                         }
+                        className="rounded-xl"
                         unoptimized
                       />
                     </div>
@@ -116,14 +115,21 @@ const OffersList: React.FC<OffersListProps> = ({ offers }) => {
                       <div className="font-semibold text-base">
                         {cardData.cardName}
                       </div>
-                      <div className="text-sm text-gray-600">
-                        가격: {offer.price} ETH
+                      <div className="text-sm ">
+                        제안 가격:{' '}
+                        <span className="bg-theme-bg-gray p-1 rounded-md font-semibold">
+                          {offer.price ? `${offer.price} ETH ✨` : '--'}
+                        </span>
                       </div>
                       <div className="text-sm text-gray-600">
-                        일자: {dayjs(offer.date).format('YYYY-MM-DD')}
+                        마지막 판매: {offer.lastPrice} ETH
                       </div>
                       <div className="text-sm text-gray-600">
-                        제안자: {offer.owner}
+                        제안 일자:{' '}
+                        {dayjs(offer.date).format('MMM D, YYYY HH:mm A')}
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        소유자: {offer.owner}
                       </div>
                     </div>
                   </div>
@@ -131,37 +137,38 @@ const OffersList: React.FC<OffersListProps> = ({ offers }) => {
 
                 {/* 데스크탑 뷰 */}
                 <div className="hidden sm:flex items-center">
-                  {/* 아이템 */}
-                  <div className="flex items-center flex-[1.7]">
-                    <div
-                      className="w-[60px] h-[60px] flex items-center justify-center rounded-md mr-4"
-                      style={{
-                        backgroundColor: cardData.attributes.background,
-                      }}
-                    >
+                  <ul className="flex items-center w-full text-sm">
+                    <li className="flex-[1.7] flex items-center gap-6">
                       <Image
-                        width={50}
-                        height={50}
-                        alt={cardData.cardName}
+                        width={40}
+                        height={40}
+                        style={{
+                          backgroundColor: cardData.attributes.background,
+                        }}
                         src={
-                          process.env.NEXT_PUBLIC_Backend_URL
-                            ? process.env.NEXT_PUBLIC_Backend_URL +
-                              cardData.image
-                            : '/fallback-image.jpg'
+                          process.env.NEXT_PUBLIC_Backend_URL + cardData.image
                         }
-                        unoptimized
+                        className="rounded-xl"
+                        alt="Card Img"
                       />
-                    </div>
-                    <div className="text-base">{cardData.cardName}</div>
-                  </div>
-                  {/* 제안 가격 */}
-                  <div className="flex-[1] text-center">{offer.price} ETH</div>
-                  {/* 제안 일자 */}
-                  <div className="flex-[1] text-center">
-                    {dayjs(offer.date).format('YYYY-MM-DD')}
-                  </div>
-                  {/* 제안자 */}
-                  <div className="flex-[1] text-center">{offer.owner}</div>
+                      <div className="font-semibold">{cardData.cardName}</div>
+                    </li>
+                    <li className="flex-[1] text-left">
+                      <span className="bg-theme-bg-gray px-2 py-1 rounded-md font-semibold group-hover:bg-[#e3e3e3]">
+                        {offer.price ? `${offer.price} ETH ✨` : '--'}
+                      </span>
+                    </li>
+                    <li className="flex-[1] text-theme-text-gray text-left">
+                      {offer.lastPrice} ETH
+                    </li>
+
+                    <li className="flex-[1] text-theme-text-blue text-left">
+                      {offer.owner}
+                    </li>
+                    <li className="flex-[1] text-theme-text-gray text-left">
+                      {dayjs(offer.date).format('MMM D, YYYY HH:mm A')}
+                    </li>
+                  </ul>
                 </div>
               </div>
             </Link>
