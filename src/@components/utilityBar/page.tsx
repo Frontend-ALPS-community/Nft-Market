@@ -36,15 +36,15 @@ const UtilityBar: React.FC<IUtilityBarProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex gap-4 items-center">
           <select
-            className="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-full shadow-sm focus:outline-none focus:border-purple-300 transition hidden md:block"
+            className="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-xl shadow-sm focus:outline-none focus:border-purple-300 transition hidden md:block"
             onChange={handleSortChange} // 정렬 값 변경 시 실행
           >
             <option value="price_asc">낮은 가격 순</option>
             <option value="price_desc">높은 가격 순</option>
           </select>
-          <div className="mx-8 flex gap-2 items-center bg-theme-bg-gray rounded-lg p-1">
+          <div className="flex gap-2 items-center bg-theme-bg-gray rounded-lg p-1">
             <div
               className={`${
                 viewMode === 'grid' ? 'bg-white opacity-100' : 'opacity-70'

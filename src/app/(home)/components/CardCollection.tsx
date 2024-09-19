@@ -27,9 +27,9 @@ const CardCollection: React.FC<ICardCollectionProps> = ({
 }) => {
   return (
     <>
-      <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-4 p-4 bg-red-400">
+      <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] max-sm:grid-cols-2 justify-center gap-4 p-4">
         {viewMode === 'list' && (
-          <div className="h-fit w-full">
+          <div className="h-fit w-full bg-yellow-200 col-span-full">
             <ul className="flex font-semibold border-b-2 mt-4 p-2">
               <li className="flex-[1.7]">아이템</li>
               <li className="flex-[1]">현재 가격</li>
@@ -43,17 +43,19 @@ const CardCollection: React.FC<ICardCollectionProps> = ({
           </div>
         )}
         {card.map((item) => (
-          <Card
-            key={item._id}
-            id={item._id}
-            title={item.cardName}
-            price={item.price.currentPrice}
-            lastPrice={item.price.lastPrice}
-            imageUrl={item.image}
-            background={item.attributes.background}
-            onClick={() => onCardClick(item._id)}
-            viewMode={viewMode}
-          />
+          <div className="flex justify-center items-center">
+            <Card
+              key={item._id}
+              id={item._id}
+              title={item.cardName}
+              price={item.price.currentPrice}
+              lastPrice={item.price.lastPrice}
+              imageUrl={item.image}
+              background={item.attributes.background}
+              onClick={() => onCardClick(item._id)}
+              viewMode={viewMode}
+            />
+          </div>
         ))}
       </div>
     </>
