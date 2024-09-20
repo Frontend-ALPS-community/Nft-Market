@@ -108,7 +108,7 @@ const Header = () => {
               <div className="w-8 sm:w-16">
                 <BiSolidWallet size={'full'} />
               </div>
-              <div className=" font-semibold text-xs  sm:text-base">
+              <div className=" font-semibold text-xs  sm:text-base px-1">
                 &nbsp; {wallet} ETH
               </div>
             </div>
@@ -143,13 +143,13 @@ const Header = () => {
           <>
             <Link
               href="/auth?type=login"
-              className="mr-2 sm:mr-4 h-8 sm:h-10 rounded-full px-4 sm:px-6 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center justify-center text-sm sm:text-base"
+              className="mr-2 h-8 w-16 sm:mr-4 sm:w-auto sm:h-10 rounded-full  sm:px-6 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center justify-center text-xs sm:text-base"
             >
               로그인
             </Link>
             <Link
               href="/auth?type=signup"
-              className="h-8 sm:h-10 rounded-full px-4 sm:px-6 border border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center text-sm sm:text-base"
+              className="h-8 w-16 sm:w-auto sm:h-10 rounded-full  sm:px-6 border border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center text-xs sm:text-base"
             >
               회원가입
             </Link>
