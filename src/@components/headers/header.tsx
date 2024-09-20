@@ -108,7 +108,7 @@ const Header = () => {
               <div className="w-8 sm:w-16">
                 <BiSolidWallet size={'full'} />
               </div>
-              <div className=" font-semibold text-xs  sm:text-base px-1">
+              <div className=" font-semibold text-xs  sm:text-base px-1 sm:px-0">
                 &nbsp; {wallet} ETH
               </div>
             </div>
