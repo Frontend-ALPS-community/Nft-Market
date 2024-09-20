@@ -6,7 +6,7 @@ import usePriceInfo from '@/store/usePriceInfo';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Header = () => {
   const { price, setPrice } = usePriceInfo((state) => ({
@@ -41,6 +41,8 @@ const Header = () => {
     authState: state.authState,
     setAuthState: state.setAuthState,
   }));
+
+  const [state, setState] = useState<boolean>(false);
 
   const onClickLogOutBtn = async () => {
     try {

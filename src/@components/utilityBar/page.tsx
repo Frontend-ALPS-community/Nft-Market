@@ -1,5 +1,6 @@
 'use client';
 import useUtilBar from '@/store/useUtilBar';
+import { BsArrowDownUp } from 'react-icons/bs';
 import { FiFilter, FiGrid, FiList } from 'react-icons/fi';
 
 interface IUtilityBarProps {
@@ -24,16 +25,21 @@ const UtilityBar: React.FC<IUtilityBarProps> = ({
     <div className="sticky top-[80px] z-20">
       <div className="mt-6 h-[70px] between-flex p-2 mx-auto bg-white">
         <div className="flex gap-4 items-center">
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition">
+          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition max-sm:hidden">
             <FiFilter
               className="text-gray-700"
               size={20}
               onClick={toggleButton}
             />
           </div>
-          <div className="text-gray-600 hidden md:block font-semibold">
-            결과 {cardLength}개
+          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition">
+            <FiFilter
+              className="text-gray-700"
+              size={20}
+              // onClick={toggleButton}
+            />
           </div>
+          <div className="text-gray-600 font-semibold">결과 {cardLength}개</div>
         </div>
 
         <div className="flex gap-4 items-center">
@@ -45,10 +51,13 @@ const UtilityBar: React.FC<IUtilityBarProps> = ({
             <option value="price_desc">높은 가격 순</option>
           </select>
           <div className="flex gap-2 items-center bg-theme-bg-gray rounded-lg p-1">
+            <div className="sm:hidden cursor-pointer rounded-lg p-2 bg-white">
+              <BsArrowDownUp size={20} />
+            </div>
             <div
               className={`${
                 viewMode === 'grid' ? 'bg-white opacity-100' : 'opacity-70'
-              } cursor-pointer rounded-lg p-2 transition`}
+              } cursor-pointer rounded-lg p-2 transition max-sm:hidden`}
               onClick={() => handleViewModeChange('grid')}
             >
               <FiGrid size={25} />
@@ -56,7 +65,7 @@ const UtilityBar: React.FC<IUtilityBarProps> = ({
             <div
               className={`${
                 viewMode === 'list' ? 'bg-white opacity-100' : 'opacity-70'
-              } cursor-pointer rounded-lg p-2 transition`}
+              } cursor-pointer rounded-lg p-2 transition max-sm:hidden`}
               onClick={() => handleViewModeChange('list')}
             >
               <FiList size={25} />

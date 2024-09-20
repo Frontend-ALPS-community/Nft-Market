@@ -27,9 +27,9 @@ const CardCollection: React.FC<ICardCollectionProps> = ({
 }) => {
   return (
     <>
-      <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] max-sm:grid-cols-2 justify-center gap-4 p-4">
+      <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] max-sm:grid-cols-2 justify-center gap-2 p-4">
         {viewMode === 'list' && (
-          <div className="h-fit w-full bg-yellow-200 col-span-full">
+          <div className="h-fit w-full bg-yellow-200 col-span-full min-w-[850px]">
             <ul className="flex font-semibold border-b-2 mt-4 p-2">
               <li className="flex-[1.7]">아이템</li>
               <li className="flex-[1]">현재 가격</li>
@@ -43,7 +43,7 @@ const CardCollection: React.FC<ICardCollectionProps> = ({
           </div>
         )}
         {card.map((item) => (
-          <div className="flex justify-center items-center">
+          <div className="flex max-md:justify-center">
             <Card
               key={item._id}
               id={item._id}
