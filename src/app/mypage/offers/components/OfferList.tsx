@@ -112,7 +112,7 @@ const OffersList: React.FC<OffersListProps> = ({ offers }) => {
                       />
                     </div>
                     <div className="flex-1">
-                      <div className="font-semibold text-base">
+                      <div className="font-semibold text-base mb-1">
                         {cardData.cardName}
                       </div>
                       <div className="text-sm ">

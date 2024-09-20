@@ -42,7 +42,7 @@ const Page: React.FC = () => {
     fetchOffers();
   }, [userId]);
   return (
-    <div className="p-4 bg-white   relative">
+    <div className="px-4    relative">
       {offers && <OffersList offers={offers} />}
     </div>
   );

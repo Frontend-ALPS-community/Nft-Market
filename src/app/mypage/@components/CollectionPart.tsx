@@ -94,7 +94,7 @@ const CollectionPart: React.FC<CollectionPartProps> = ({ fetchData }) => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <UtilityBar
         cardLength={filteredCards.length}
         handleViewModeChange={handleViewModeChange}

@@ -14,7 +14,7 @@ const SortButtons: React.FC<SortButtonsProps> = ({
   dateAsc,
 }) => {
   return (
-    <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 justify-end sm:justify-end items-end sm:items-center ">
+    <div className="flex flex-col mb-2 sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 justify-end sm:justify-end items-end sm:items-center ">
       <button
         onClick={onSortByPrice}
         className="w-full sm:w-auto px-4 py-2 text-sm rounded-lg border-solid border border-theme-text-black text-theme-text-black font-semibold transform hover:scale-105 transition-transform duration-300 ease-in-out"

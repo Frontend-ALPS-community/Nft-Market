@@ -11,7 +11,7 @@ const Btn = dynamic(() => import('./@components/Btn'), { ssr: false });
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative max-w-full">
       {/* 배경 및 헤더 섹션 */}
       <div className="bg-theme-bg-gray h-48 md:h-80 p-4 md:p-8 w-full flex flex-col ">
         <div className="absolute top-32 sm:top-0 sm:pt-44 left-1/2 transform -translate-x-1/2 md:left-0 md:-translate-x-0 md:ml-8">
@@ -29,12 +29,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </div>
 
       {/* 버튼 섹션 */}
-      <div className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start md:ml-8 mt-12 md:mt-28 space-y-4 md:space-y-0 md:space-x-4">
+      <div className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start md:ml-8 mt-12  space-y-4 md:space-y-0 md:space-x-4">
         <Btn />
       </div>
 
       {/* 콘텐츠 섹션 */}
-      <div className="p-4">{children}</div>
+      <div>{children}</div>
     </div>
   );
 };
