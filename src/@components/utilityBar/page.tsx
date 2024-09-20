@@ -25,14 +25,14 @@ const UtilityBar: React.FC<IUtilityBarProps> = ({
     <div className="sticky top-[80px] z-20">
       <div className="mt-6 h-[70px] between-flex p-2 mx-auto bg-white">
         <div className="flex gap-4 items-center">
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition max-sm:hidden">
+          <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer transition max-sm:hidden">
             <FiFilter
               className="text-gray-700"
               size={20}
               onClick={toggleButton}
             />
           </div>
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition">
+          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition sm:hidden">
             <FiFilter
               className="text-gray-700"
               size={20}

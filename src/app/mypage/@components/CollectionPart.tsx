@@ -40,7 +40,7 @@ const CollectionPart: React.FC<CollectionPartProps> = ({ fetchData }) => {
       try {
         const res = await fetchData();
         setCard(res);
-        console.log('전체 카드 데이터:', res);
+        //console.log('전체 카드 데이터:', res);
       } catch (error) {
         console.error('Failed to fetch card data:', error);
       }
@@ -50,9 +50,9 @@ const CollectionPart: React.FC<CollectionPartProps> = ({ fetchData }) => {
 
   // 필터링 로직
   useEffect(() => {
-    console.log('필터링 시작');
-    console.log('선택된 색상:', selectedColors);
-    console.log('전체 카드 데이터:', card);
+    //console.log('필터링 시작');
+    //console.log('선택된 색상:', selectedColors);
+    //console.log('전체 카드 데이터:', card);
 
     if (selectedColors.length > 0) {
       const selectedColorCodes = selectedColors.map((color) =>
@@ -62,27 +62,27 @@ const CollectionPart: React.FC<CollectionPartProps> = ({ fetchData }) => {
       const filtered = card.filter((item) => {
         const itemBackground = item.attributes.background.trim().toLowerCase();
         const isMatch = selectedColorCodes.includes(itemBackground);
-        console.log(
-          `카드 ${item._id} - background: ${item.attributes.background}, 매칭 여부: ${isMatch}`
-        );
+        // console.log(
+        //   `카드 ${item._id} - background: ${item.attributes.background}, 매칭 여부: ${isMatch}`
+        // );
         return isMatch;
       });
       setFilteredCards(filtered);
-      console.log('필터링된 카드:', filtered);
+      //console.log('필터링된 카드:', filtered);
     } else {
       setFilteredCards(card);
-      console.log('선택된 색상이 없으므로 전체 카드 표시');
+      //console.log('선택된 색상이 없으므로 전체 카드 표시');
     }
   }, [selectedColors, card]);
 
   // CardCollection에 전달되는 카드 데이터 확인
   useEffect(() => {
-    console.log('CardCollection에 전달되는 카드 데이터:', filteredCards);
+    //console.log('CardCollection에 전달되는 카드 데이터:', filteredCards);
   }, [filteredCards]);
 
   const handleColorChange = (colors: string[]) => {
     setSelectedColors(colors);
-    console.log('선택된 색상:', colors);
+    //console.log('선택된 색상:', colors);
   };
 
   const handleCardClick = (id: string) => {
@@ -94,7 +94,7 @@ const CollectionPart: React.FC<CollectionPartProps> = ({ fetchData }) => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <UtilityBar
         cardLength={filteredCards.length}
         handleViewModeChange={handleViewModeChange}

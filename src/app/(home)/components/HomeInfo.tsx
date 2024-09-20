@@ -16,7 +16,7 @@ const HomeInfo = () => {
           <Image
             width={100}
             height={100}
-            src="/assets/logo/logoball.png"
+            src="/assets/logo/monster.png"
             className="bg-black rounded-xl"
             alt="Logo Img"
           />

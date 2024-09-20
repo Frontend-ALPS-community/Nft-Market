@@ -16,8 +16,10 @@ const Btn = () => {
   };
 
   return (
-    <div className="relative">
-      <div className="mb-2 text-lg md:text-2xl font-semibold">{username}</div>
+    <div className="relative ">
+      <div className="mt-2 mb-4 text-lg md:text-2xl font-semibold ">
+        {username}
+      </div>
       <div className=" flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 px-2 sm:px-0">
         <Link href="/mypage/collections">
           <button className={getButtonClass('collections')}>수집됨</button>

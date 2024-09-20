@@ -42,11 +42,7 @@ const Page: React.FC = () => {
     fetchOffers();
   }, [userId]);
   return (
-    <div className="p-8 bg-white shadow rounded-lg relative">
-      <h1 className="text-2xl md:text-xl sm:text-lg font-bold mb-4">제안</h1>
-      <p className="md:text-base text-xs">
-        사용자가 제안한 아이템들을 보여주는 페이지입니다.
-      </p>
+    <div className="px-4    relative">
       {offers && <OffersList offers={offers} />}
     </div>
   );
