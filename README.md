@@ -35,16 +35,13 @@
 
 <div align="center">
 
-| [이재훈](https://github.com/JaeHoonKOR)                                                                      | [장영승](https://github.com/YoungSeungJang)                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| <img src="https://avatars.githubusercontent.com/u/91282032?v=4" width="100px" style="border-radius: 50%; display: block; margin: auto;" /> | <img src="https://avatars.githubusercontent.com/u/50819030?v=4" width="100px" style="border-radius: 50%; display: block; margin: auto;" /> |
-| <div align="center"><strong>Frontend Developer</strong></div>                                                 | <div align="center"><strong>Frontend & Backend Developer</strong></div>                                       |
-| <div align="center">헤더, 마이 페이지, 이미지 생성</div>                                                      | <div align="center">메인 페이지, 상세 페이지, 거래 페이지, 백엔드 전체 개발</div>                              |
+|                                   [이재훈](https://github.com/JaeHoonKOR)                                    |                                 [장영승](https://github.com/YoungSeungJang)                                  |
+| :----------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------: |
+| <img src="https://avatars.githubusercontent.com/u/91282032?v=4" width="100px" style="border-radius: 50%;" /> | <img src="https://avatars.githubusercontent.com/u/50819030?v=4" width="100px" style="border-radius: 50%;" /> |
+|                                            **Frontend Developer**                                            |                                       **Frontend & Backend Developer**                                       |
+|                                        헤더, 마이 페이지, 이미지 생성                                        |                           메인 페이지, 상세 페이지, 거래 페이지, 백엔드 전체 개발                            |
 
 </div>
-
-
-
 
 ## 🛠️ 사용 기술 스택
 
