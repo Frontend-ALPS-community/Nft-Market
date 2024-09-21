@@ -3,7 +3,7 @@ import { childProps } from '@/types/type';
 import { AnimatePresence, motion } from 'framer-motion';
 
 interface IModalLayout extends childProps {
-  isOpen: boolean;
+  isOpen: boolean | undefined;
 }
 
 const ModalLayout: React.FC<IModalLayout> = ({ isOpen, children }) => {

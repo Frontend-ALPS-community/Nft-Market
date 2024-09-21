@@ -5,8 +5,8 @@ import Property from './property';
 
 interface NavbarProps {
   onColorChange: (colors: string[]) => void; // 색상 변경 핸들러
-  filter: boolean;
-  handleFilterChange: () => void;
+  filter?: boolean;
+  handleFilterChange?: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({

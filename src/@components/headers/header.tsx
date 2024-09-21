@@ -48,7 +48,7 @@ const Header = () => {
   useEffect(() => {
     setPrice();
     fetchUserStatus();
-  }, [username, price]);
+  }, []);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();

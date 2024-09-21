@@ -8,9 +8,9 @@ interface IUtilityBarProps {
   cardLength: number;
   handleViewModeChange: (mode: 'grid' | 'list') => void;
   viewMode: 'grid' | 'list';
-  handleFilterChange: () => void;
-  handleArrowDownUp: () => void;
-  arrowDownUp: boolean;
+  handleFilterChange?: () => void;
+  handleArrowDownUp?: () => void;
+  arrowDownUp?: boolean;
 }
 
 const UtilityBar: React.FC<IUtilityBarProps> = ({
