@@ -101,7 +101,7 @@ const CollectionPart: React.FC<CollectionPartProps> = ({ fetchData }) => {
         viewMode={viewMode}
       />
       <div className="flex">
-        <Navbar onColorChange={handleColorChange} card={card} />
+        <Navbar onColorChange={handleColorChange} />
         <CardCollection
           card={filteredCards}
           onCardClick={handleCardClick}
