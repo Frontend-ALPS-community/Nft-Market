@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
 
-## Getting Started
+<img width="150px" src="https://github.com/user-attachments/assets/c2b9bb13-5de7-4eb3-8c3a-f933294cf655"/>
 
-First, run the development server:
+# NFT Market
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**NFT Market**은 사용자들이 디지털 이미지를 NFT로 거래할 수 있는 플랫폼입니다.  
+디지털 아트의 소유권을 안전하게 사고팔 수 있는 직관적이고 편리한 환경을 제공합니다.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[**프로젝트 배포 주소**](https://your-deployed-site.com)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+</div>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
+## 🖥️ 서비스 미리보기
 
-To learn more about Next.js, take a look at the following resources:
+<div align="center">
+<img width="90%" src="https://your-capture-image-url.com"/>
+</div>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🌳 프로젝트 구성
 
-## Deploy on Vercel
+프로젝트는 다음과 같은 주요기능들로 이루어져있습니다.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **기능1**:
+- **기능1**:
+- **기능1**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+
+## 👪 팀원
+
+<div align="center">
+
+| [이재훈](https://github.com/JaeHoonKOR)                                                                      | [장영승](https://github.com/YoungSeungJang)                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| <img src="https://avatars.githubusercontent.com/u/91282032?v=4" width="100px" style="border-radius: 50%;" /> | <img src="https://avatars.githubusercontent.com/u/50819030?v=4" width="100px" style="border-radius: 50%;" /> |
+| **Frontend Developer**                                                                                       | **Frontend & Backend Developer**                                                                             |
+| **맡은 역할**: 헤더, 마이 페이지, 이미지 생성                                                                | **담당 페이지**: 메인 페이지, 상세 페이지, 거래 페이지, 백엔드 전체 개발                                     |
+
+</div>
+
+---
+
+## 🛠️ 사용 기술 스택
+
+- **Frontend**: ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white&style=flat-square) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white&style=flat-square) ![Zustand](https://img.shields.io/badge/Zustand-764ABC?logoColor=white&style=flat-square)
+- **Backend**: ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white&style=flat-square) ![Express.js](https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white&style=flat-square) ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white&style=flat-square)
+- **CI/CD**: ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white&style=flat-square)
+
+---
+
+## 🌐 Browser Support
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome_48x48.png" width="48" height="48"/>  
+  <img src="https://raw.githubusercontent.com/alrra/browser-logos/main
