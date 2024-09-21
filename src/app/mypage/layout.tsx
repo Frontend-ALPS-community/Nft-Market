@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import React from 'react';
@@ -8,6 +9,10 @@ interface LayoutProps {
 }
 
 const Btn = dynamic(() => import('./@components/Btn'), { ssr: false });
+
+export const metadata: Metadata = {
+  title: 'Nft Market | MyPage',
+};
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (

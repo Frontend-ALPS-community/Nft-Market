@@ -10,7 +10,7 @@ const DetailProp: React.FC<IDetailProp> = ({ card }) => {
   return (
     <div className="my-4">
       <DetailLayout title="특성" arrow={true} bold={true}>
-        <div className="flex flex-wrap gap-2 m-2">
+        <div className="flex flex-wrap gap-2 m-2 max-md:justify-center">
           {Object.entries(card.attributes).map(([key, value]) => (
             <BoxLayout key={key} property={key.toUpperCase()} value={value} />
           ))}

@@ -12,7 +12,7 @@ const DetailTransaction: React.FC<ITransProps> = ({ card, id }) => {
     <div className="my-8">
       <DetailLayout arrow={true} bold={true} title={'아이템 거래'}>
         <div className="max-h-[400px] overflow-auto">
-          <div className={`flex sticky top-0 px-4 py-2 bg-white`}>
+          <div className={`flex sticky top-0 px-4 py-2 bg-white min-w-[850px]`}>
             <div className={`flex-[0.8]`}>이벤트</div>
             <div className={`flex-[0.8]`}>가격</div>
             <div className={`flex-1`}>From</div>

@@ -153,7 +153,7 @@ const Page: React.FC<IParams> = ({ params: { id } }) => {
         <SellModal id={id} card={card} onCardUpdated={updateCard} />
       </ModalLayout>
       <div className="m-8">
-        <div className="flex gap-8">
+        <div className="flex gap-8 max-lg:flex-col">
           <div className="flex-[3]">
             <DetailImg id={id} card={card} onCardUpdated={updateCard} />
             <DetailProp card={card} />

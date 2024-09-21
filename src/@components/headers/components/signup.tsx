@@ -2,7 +2,11 @@ import { authApi } from '@/apis/authApi';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
-const Signup: React.FC = () => {
+interface ISignUpProps {
+  handleIsModalOpen: () => void;
+}
+
+const Signup: React.FC<ISignUpProps> = ({ handleIsModalOpen }) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
@@ -29,14 +33,14 @@ const Signup: React.FC = () => {
   return (
     <div className="w-full max-w-md p-4 sm:p-6">
       <form
-        className="bg-white p-4 sm:p-6 rounded shadow-md relative"
+        className="bg-white p-4 sm:p-6 rounded relative"
         onSubmit={handleSubmit}
       >
         <div className="mb-4 relative">
           <label className="block text-gray-700">이메일</label>
           <input
             type="email"
-            className="w-full px-4 py-2 mt-3 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+            className="w-full px-4 py-2 mt-3 border rounded-md focus:outline-none focus:ring-1"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -46,7 +50,7 @@ const Signup: React.FC = () => {
           <label className="block text-gray-700">비밀번호</label>
           <input
             type="password"
-            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -56,7 +60,7 @@ const Signup: React.FC = () => {
           <label className="block text-gray-700">비밀번호 확인</label>
           <input
             type="password"
-            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
@@ -66,7 +70,7 @@ const Signup: React.FC = () => {
           <label className="block text-gray-700">닉네임</label>
           <input
             type="text"
-            className="w-full px-4 py-2 mt-3 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+            className="w-full px-4 py-2 mt-3 border rounded-md focus:outline-none focus:ring-1"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -76,6 +80,7 @@ const Signup: React.FC = () => {
           <button
             type="submit"
             className="w-full px-4 py-2 bg-black text-white rounded-md"
+            onClick={handleIsModalOpen}
           >
             회원가입
           </button>
