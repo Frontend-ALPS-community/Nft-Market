@@ -6,7 +6,11 @@ import useStatusStore from '@/store/useStatus';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
-const Login: React.FC = () => {
+interface ILoginProps {
+  handleIsModalOpen: () => void;
+}
+
+const Login: React.FC<ILoginProps> = ({ handleIsModalOpen }) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const router = useRouter();
@@ -21,9 +25,6 @@ const Login: React.FC = () => {
       // 로그인 요청
       const res = await authApi.login({ email, password });
       if (res.status === 200) {
-        // console.log('로그인 성공:', res);
-
-        // 로그인 상태 확인
         const statusRes = await authApi.status();
         const { loggedIn, decoded } = statusRes;
 
@@ -31,11 +32,6 @@ const Login: React.FC = () => {
           setAuthState(true); // 로그인 상태 업데이트
           setUserId(decoded.userId); // userId를 zustand 스토어에 저장
           setUsername(decoded.username);
-          // console.log('userId set in store:', decoded);
-
-          // 바로 store에서 상태 확인
-          // const userIdFromStore = useStatusStore.getState().username;
-          // console.log('Current userId from store:', userIdFromStore);
 
           router.push('/'); // 메인 페이지로 이동
         } else {
@@ -54,14 +50,14 @@ const Login: React.FC = () => {
     <div className="centered-flex">
       <div className="w-full max-w-md p-4 sm:p-6">
         <form
-          className="bg-white p-4 sm:p-6 rounded shadow-md relative"
+          className="bg-white p-4 sm:p-6 rounded relative"
           onSubmit={handleSubmit}
         >
           <div className="mb-4 relative">
             <label className="block text-gray-700">이메일</label>
             <input
               type="email"
-              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -70,7 +66,7 @@ const Login: React.FC = () => {
             <label className="block text-gray-700">비밀번호</label>
             <input
               type="password"
-              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -80,6 +76,7 @@ const Login: React.FC = () => {
             <button
               type="submit"
               className="w-full px-4 py-2 bg-black text-white rounded-md"
+              onClick={handleIsModalOpen}
             >
               로그인
             </button>

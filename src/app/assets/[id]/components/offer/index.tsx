@@ -82,7 +82,7 @@ const DetailOffer: React.FC<IDetailOffer> = ({
             />
           </div>
           {card?.offers.map((item) => (
-            <div className="py-4 border-t">
+            <div className="py-4 border-t min-w-[750px]">
               <OfferLayout
                 key={item._id}
                 price={`${item.price} ETH`}

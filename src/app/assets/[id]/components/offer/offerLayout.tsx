@@ -24,7 +24,7 @@ const OfferLayout: React.FC<IOfferLayout> = ({
   const remain = calculateRemainingTime(expire);
   return (
     <>
-      <div className="mx-4 flex-center">
+      <div className="mx-4 flex-center min-w-[750px] overflow-x-auto">
         <div className={`flex-[2.5] ${item ? 'font-semibold' : ''}`}>
           {price}
         </div>

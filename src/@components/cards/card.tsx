@@ -30,7 +30,7 @@ const Card: React.FC<CardProps> = ({
   if (viewMode === 'grid') {
     return (
       <div
-        className="bg-white rounded-lg shadow-md m-4 max-w-[250px] min-w-[200px] cursor-pointer flex-grow relative group overflow-hidden"
+        className="bg-white rounded-lg shadow-md m-4 max-w-[250px] min-w-[160px] cursor-pointer flex-grow relative group overflow-hidden"
         onClick={handleButtonClick}
       >
         <div
@@ -45,11 +45,13 @@ const Card: React.FC<CardProps> = ({
           />
         </div>
         <div className="m-4">
-          <p className="my-4 font-bold">{title}</p>
-          <p className={`my-2 font-semibold ${price ? '' : 'invisible'}`}>
+          <p className="my-4 font-bold max-sm:text-sm">{title}</p>
+          <p
+            className={`my-2 font-semibold ${price ? '' : 'invisible'} max-sm:text-sm`}
+          >
             {price} ETH
           </p>
-          <p>마지막 판매: {lastPrice} ETH</p>
+          <p className="max-sm:text-xs">마지막 판매: {lastPrice} ETH</p>
         </div>
         <div className="absolute bottom-0 left-0 right-0 bg-theme-text-blue text-white text-center py-2 opacity-0 transform translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
           지금 구매하기

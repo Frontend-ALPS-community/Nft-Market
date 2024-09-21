@@ -1,4 +1,6 @@
 'use client';
+import Login from '@/@components/headers/components/login';
+import Signup from '@/@components/headers/components/signup';
 import { authApi } from '@/apis/authApi';
 import useAuthStore from '@/store/useAuth';
 import useDecodedStore from '@/store/useDecode';
@@ -6,14 +8,28 @@ import usePriceInfo from '@/store/usePriceInfo';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef } from 'react';
-
+import { useEffect, useRef, useState } from 'react';
+import { BiSolidWallet } from 'react-icons/bi';
+import { FiX } from 'react-icons/fi';
+import { IoPersonCircle } from 'react-icons/io5';
+import ModalLayout from '../modal/modalLayout';
 const Header = () => {
   const { price, setPrice } = usePriceInfo((state) => ({
     price: state.price,
     setPrice: state.setPrice,
   }));
   const setDecoded = useDecodedStore().setDecoded;
+  const { wallet, username } = useDecodedStore().decoded;
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState<boolean>(false);
+
+  const handleIsModalOpen = (modalType: 'login' | 'signup') => {
+    if (modalType === 'login') {
+      setIsLoginModalOpen(!isLoginModalOpen);
+    } else if (modalType === 'signup') {
+      setIsSignUpModalOpen(!isSignUpModalOpen);
+    }
+  };
   const fetchUserStatus = async () => {
     try {
       const res = await authApi.status();
@@ -32,7 +48,7 @@ const Header = () => {
   useEffect(() => {
     setPrice();
     fetchUserStatus();
-  }, []);
+  }, [username, price]);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -87,30 +103,65 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 z-30 w-full h-[80px] bg-white flex justify-between items-center px-4 sm:px-6">
+      <ModalLayout isOpen={isLoginModalOpen}>
+        <div className="flex justify-end p-2">
+          <FiX
+            className="cursor-pointer"
+            size={30}
+            onClick={() => handleIsModalOpen('login')}
+          />
+        </div>
+        <Login handleIsModalOpen={() => handleIsModalOpen('login')} />
+      </ModalLayout>
+      <ModalLayout isOpen={isSignUpModalOpen}>
+        <div className="flex justify-end p-2">
+          <FiX
+            className="cursor-pointer"
+            size={30}
+            onClick={() => handleIsModalOpen('signup')}
+          />
+        </div>
+        <Signup handleIsModalOpen={() => handleIsModalOpen('signup')} />
+      </ModalLayout>
       <Link href="/" className="flex items-center">
         <img
           width={60}
           height={60}
-          src="/assets/logo/logoball.png"
+          src="/assets/logo/header.png"
           alt="Logo"
-          className="mr-2 sm:mr-3"
+          className="max-sm:w-[30px] max-sm:h-[30px]"
         />
-        <div className="text-gray-800 font-semibold text-base sm:text-lg">
-          Service Name
-        </div>
+        <Image
+          alt="title"
+          src="/assets/logo/NftMarket.png"
+          width={150}
+          height={150}
+          className="max-sm:w-[100px]"
+        />
       </Link>
       <div className="relative flex items-center">
         {authState ? (
-          <div className="relative z-50">
+          <div className="relative flex gap-2">
+            <div className="bg-theme-bg-gray flex items-center gap-2 p-2 rounded-lg ">
+              <div>
+                <BiSolidWallet size={30} />
+              </div>
+              <div className="font-bold text-lg max-sm:text-base">
+                {wallet} ETH
+              </div>
+            </div>
             <button
               onClick={toggleDropdown}
-              className="h-8 sm:h-14 w-8 sm:w-14 rounded-full bg-white flex items-center justify-center"
+              className="bg-theme-bg-gray p-2 rounded-lg flex gap-2 items-center justify-center "
             >
-              <Image src="/assets/logo/my.png" alt="Logo" layout="fill" />
+              <IoPersonCircle size={30} />
+              <div className="font-semibold text-lg max-sm:hidden">
+                {username}
+              </div>
             </button>
             <div
               ref={dropdownRef}
-              className="absolute right-0 mt-2 w-40 sm:w-48  bg-white rounded-md shadow-lg py-1 hidden"
+              className="absolute right-0 mt-16 w-40 sm:w-48  bg-white rounded-md shadow-lg py-1 hidden"
             >
               <Link
                 href="/mypage/collections"
@@ -123,7 +174,7 @@ const Header = () => {
                   onClickLogOutBtn();
                   dropdownRef.current?.classList.add('hidden');
                 }}
-                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition"
+                className="block w-full text-left px-4 py-2  text-sm text-gray-700 hover:bg-gray-100 transition"
               >
                 로그아웃
               </button>
@@ -131,18 +182,18 @@ const Header = () => {
           </div>
         ) : (
           <>
-            <Link
-              href="/auth?type=login"
-              className="mr-2 sm:mr-4 h-8 sm:h-10 rounded-full px-4 sm:px-6 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center justify-center text-sm sm:text-base"
+            <div
+              className="mr-2 h-8 w-16 sm:mr-4 sm:w-auto sm:h-10 rounded-lg sm:px-6 border hover:bg-theme-bg-gray transition-all duration-300 flex items-center justify-center text-xs sm:text-base cursor-pointer font-semibold"
+              onClick={() => handleIsModalOpen('login')}
             >
               로그인
-            </Link>
-            <Link
-              href="/auth?type=signup"
-              className="h-8 sm:h-10 rounded-full px-4 sm:px-6 border border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center text-sm sm:text-base"
+            </div>
+            <div
+              className="h-8 w-16 sm:w-auto sm:h-10 rounded-lg  sm:px-6 border hover:bg-theme-bg-gray transition-all duration-300 flex items-center justify-center text-xs sm:text-base cursor-pointer font-semibold"
+              onClick={() => handleIsModalOpen('signup')}
             >
               회원가입
-            </Link>
+            </div>
           </>
         )}
       </div>

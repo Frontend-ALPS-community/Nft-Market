@@ -44,7 +44,8 @@ const SellModal: React.FC<ISellModal> = ({ id, card, onCardUpdated }) => {
               src={process.env.NEXT_PUBLIC_Backend_URL + card.image}
               className="w-[140px] h-[140px] m-4 rounded-xl"
               alt="Card Img"
-              layout="fill"
+              width={140}
+              height={140}
             />
             <div className="font-bold text-xl text-center">{card.cardName}</div>
           </div>

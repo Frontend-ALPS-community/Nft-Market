@@ -16,7 +16,7 @@ const TransactionItem: React.FC<ITransactionItemProps> = ({ item }) => {
   };
 
   return (
-    <div className="border-t">
+    <div className="border-t min-w-[850px]">
       <div className="flex px-4 py-4">
         <div className={`flex-[0.8]`}>판매</div>
         <div className={`flex-[0.8] font-semibold`}>{item.price} ETH</div>

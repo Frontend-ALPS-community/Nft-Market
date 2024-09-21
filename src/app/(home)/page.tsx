@@ -12,6 +12,7 @@ export default function Home() {
             autoPlay
             loop
             muted
+            controls={false}
           >
             <source src="/assets/video/high.mp4" />
           </video>

@@ -15,6 +15,8 @@ const CollectionPart = () => {
   const [card, setCard] = useState<CardData[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid'); // 뷰 모드 상태 추가
+  const [filter, setFilter] = useState<boolean>(false);
+  const [arrowDownUp, setArrowDownUp] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchCard = async () => {
@@ -39,15 +41,29 @@ const CollectionPart = () => {
   const handleViewModeChange = (mode: 'grid' | 'list') => {
     setViewMode(mode);
   };
+  const handleFilterChange = () => {
+    setFilter(!filter);
+  };
+
+  const handleArrowDownUp = () => {
+    setArrowDownUp(!arrowDownUp);
+  };
   return (
     <div>
       <UtilityBar
         cardLength={card.length}
         handleViewModeChange={handleViewModeChange}
         viewMode={viewMode}
+        handleFilterChange={handleFilterChange}
+        arrowDownUp={arrowDownUp}
+        handleArrowDownUp={handleArrowDownUp}
       />
       <div className="flex">
-        <Navbar onColorChange={handleColorChange} card={card} />
+        <Navbar
+          onColorChange={handleColorChange}
+          handleFilterChange={handleFilterChange}
+          filter={filter}
+        />
         <CardCollection
           card={card}
           onCardClick={handleCardClick}
