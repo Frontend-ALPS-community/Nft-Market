@@ -62,11 +62,10 @@
 Latest ✔ | Latest ✔ | Latest ✔ | 
 
 <br>
-#### Github 협업
 
-- Pull request > PR Review(팀원 전원 Approve) > Merge 방식으로 진행
+### Github 협업
+
+- Pull request > PR Review > Merge 방식으로 진행
 
   <br />
-<div align="center">
-  <img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome_48x48.png" width="48" height="48"/>  
-  <img src="https://raw.githubusercontent.com/alrra/browser-logos/main
+
