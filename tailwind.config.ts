@@ -14,6 +14,7 @@ const config: Config = {
       },
       fontSize: {
         xs: '12px',
+        xxs: '10px',
       },
       width: {
         'custom-width': '1440px',
