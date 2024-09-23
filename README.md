@@ -49,6 +49,12 @@
 - **CI/CD**: ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white&style=flat-square)
 
 ---
+### 📌 기획과정
+
+#### 디자인 - Figma
+
+- 화면 디자인 개발과 원활한 협업를 위해 Figma에서 디자인과 기획 작업을 진행하였습니다. <a href="https://www.figma.com/design/xF0Q6TK86zP3IjmjCJj8ZW/Untitled?node-id=0-1&node-type=canvas&t=KzSCiVVGtNaIGgYO-0">피그마 링크</a>
+![image](https://github.com/user-attachments/assets/fbf8dc22-bcdb-4014-bbf1-da8ede250e80)
 
 ## 🌐 Browser Support
 
