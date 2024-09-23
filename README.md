@@ -16,7 +16,7 @@
 ## 🖥️ 서비스 미리보기
 
 <div align="center">
-<img width="90%" src="https://your-capture-image-url.com"/>
+![2](https://github.com/user-attachments/assets/e9f54288-db6d-4ee4-be4d-52843b3657e8)
 </div>
 
 ---
