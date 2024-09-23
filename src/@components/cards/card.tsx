@@ -45,9 +45,9 @@ const Card: React.FC<CardProps> = ({
           />
         </div>
         <div className="m-4">
-          <p className="my-4 font-bold max-sm:text-sm">{title}</p>
+          <p className="my-4 font-bold max-sm:text-xs">{title}</p>
           <p
-            className={`my-2 font-semibold ${price ? '' : 'invisible'} max-sm:text-sm`}
+            className={`my-2 font-semibold ${price ? '' : 'invisible'} max-sm:text-xs`}
           >
             {price} ETH
           </p>

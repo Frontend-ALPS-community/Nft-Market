@@ -13,6 +13,9 @@ export default function Home() {
             loop
             muted
             controls={false}
+            playsInline
+            disablePictureInPicture
+            controlsList="nodownload nofullscreen noplaybackrate"
           >
             <source src="/assets/video/high.mp4" />
           </video>
