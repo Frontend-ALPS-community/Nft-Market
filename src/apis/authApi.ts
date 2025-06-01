@@ -24,6 +24,7 @@ export const authApi = {
       email,
       password,
     });
+    console.log(res);
     return res.data;
   },
 

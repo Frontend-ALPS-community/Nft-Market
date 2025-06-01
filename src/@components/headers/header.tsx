@@ -45,24 +45,32 @@ const Header = () => {
     }
   };
 
-  useEffect(() => {
-    setPrice();
-    fetchUserStatus();
-  }, []);
-
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
-
   const { authState, setAuthState } = useAuthStore((state) => ({
     authState: state.authState,
     setAuthState: state.setAuthState,
   }));
+
+  useEffect(() => {
+    setPrice();
+    if (authState) {
+      fetchUserStatus();
+    }
+  }, [authState]);
+
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   const onClickLogOutBtn = async () => {
     try {
       await authApi.logout();
       alert('로그아웃되었습니다.');
       setAuthState(false);
+      setDecoded({
+        userId: '',
+        username: '',
+        wallet: 0,
+      });
+      dropdownRef.current?.classList.add('hidden');
       router.push('/');
     } catch (error) {
       console.error('Logout failed:', error);

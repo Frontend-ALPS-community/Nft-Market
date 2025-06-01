@@ -22,8 +22,8 @@ const Signup: React.FC<ISignUpProps> = ({ handleIsModalOpen }) => {
         email,
         password,
       });
-      router.push('/auth?type=login');
-      window.location.replace('/auth?type=login');
+      // router.push('/auth?type=login');
+      // window.location.replace('/auth?type=login');
     } catch (err) {
       console.log(err);
       alert('정보를 다시 확인해주세요');
